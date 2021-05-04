@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     int playerPosY;
     int newPosX;
     int newPosY;
-    Level levelScript;
+    //Level levelScript;
 
     //stuffInGird[,] grid = new stuffInGird[10, 10];
     string[,] layout;
@@ -32,9 +32,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelScript = GameObject.Find("Main Camera").GetComponent<Level>();
+        //levelScript = GameObject.Find("Main Camera").GetComponent<Level>();
         //layout = GameObject.Find("Main Camera").GetComponent<Level>().layout;
-        layout = levelScript.GetLayout();
+        //layout = levelScript.GetLayout();
+        layout = LevelData.openLevel.layout;
         Debug.Log("Got the array: " + layout[0, 2]);
         movePoint.parent = null;
         playerPosX = 0;
@@ -98,23 +99,28 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
-                string direction = "H" + Input.GetAxisRaw("Horizontal");
-                bool canMove = MovementCheck(direction);
+                int moveX = (int)Input.GetAxisRaw("Horizontal");
+
+                bool canMove = MovementCheck("H" + moveX);
                 Debug.Log("canMove " + canMove);
+
                 if (canMove == true)
                 {
-                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                    movePoint.position += new Vector3(moveX, 0f, 0f);
                     //playerPosX += (int)Input.GetAxisRaw("Horizontal");
                 }
             }
             else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
             {
-                string direction = "V" + Input.GetAxisRaw("Vertical");
-                bool canMove = MovementCheck(direction);
+                int moveY = (int)Input.GetAxisRaw("Vertical");
+
+                bool canMove = MovementCheck("V" + moveY);
                 Debug.Log("canMove " + canMove);
+
                 if (canMove == true)
                 {
-                    movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                    movePoint.position += new Vector3(0f, moveY, 0f);
+                    gameObject.GetComponent<SpriteRenderer>().sortingOrder -= moveY*2;
                     //playerPosY += (int)Input.GetAxisRaw("Vertical");
                 }
 
@@ -166,16 +172,14 @@ public class PlayerMovement : MonoBehaviour
                 return true;
         }
 
-        Debug.Log("Player2: " + playerPosX + "," + playerPosY + " New2: " + newPosX + "," + newPosY);
         if (newPosX < 0) { newPosX = 0; }
-        else if (newPosX >= layout.GetLength(1)-1) { newPosX = layout.GetLength(1)-1; }
-        Debug.Log("Player3: " + playerPosX + "," + playerPosY + " New3: " + newPosX + "," + newPosY);
-
+        else if (newPosX >= layout.GetLength(0)-1) { newPosX = layout.GetLength(0)-1; }
+        
         if (newPosY < 0) { newPosY = 0; }
-        else if (newPosY >= layout.GetLength(0)-1) { newPosY = layout.GetLength(0)-1; }
-        Debug.Log("Player4: " + playerPosX + "," + playerPosY + " New4: " + newPosX + "," + newPosY);
-
+        else if (newPosY >= layout.GetLength(1)-1) { newPosY = layout.GetLength(1)-1; }
+       
         if (newPosX == playerPosX && newPosY == playerPosY) { return false; }
+        
         if (newPosX > playerPosX)
         {
             Debug.Log((newPosX - 1) + "," + newPosY + "," + layout[newPosX - 1, newPosY]);
@@ -221,8 +225,13 @@ public class PlayerMovement : MonoBehaviour
                 //these conditionals to save repeating it.
             }
         }
+
+        Debug.Log("HEY!  "+layout[newPosX, newPosY]);
+
+
         //if (layout[newPosX, newPosY].Contains("rubbish")) { return false; }
         //else if (layout[newPosX, newPosY].Contains("plant")) { return false; }
+
         if (layout[newPosX, newPosY].Contains("luggage"))
         {
             //Code to move luggage object forward or possibly set a Bool
@@ -253,9 +262,11 @@ public class PlayerMovement : MonoBehaviour
             return true;
         }
 
+        
 
-
-        else { playerPosX = newPosX; playerPosY = newPosY; return true; }
+        else { 
+        playerPosX = newPosX; playerPosY = newPosY; return true;
+       }
         
     }
 }

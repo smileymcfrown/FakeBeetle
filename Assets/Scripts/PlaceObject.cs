@@ -9,8 +9,7 @@ public class PlaceObject : MonoBehaviour
 
     public float moveSpeed = 1.2f;
     public Vector3 movePoint;
-    
-    
+   
 
     int objectPosX = 6;
     int objectPosY = 4;
@@ -38,15 +37,10 @@ public class PlaceObject : MonoBehaviour
         //GameObject.Find("btnObjects").GetComponent<Button>().enabled = false;
 
 
-        //can = GameObject.FindGameObjectsWithTag("MenuButtons");
-        //foreach (GameObject button in buttons)
-        //{
-        //    button.GetComponent<Button>().interactable = false;
-        //}
-        // objectRenderer.sprite = objects[0];
-        // movePoint.parent = null;
-        /*   objectPosY++;
-
+        
+        /* Andrew's move code - Should be in update, I think.
+         * 
+         * objectPosY++;
            Vector2 pos = new Vector2(objectPosX * 1f + 0.5f, objectPosY * 1f + 0.5f);
            transform.position = Vector3.MoveTowards(transform.position, pos, moveSpeed * Time.deltaTime); */
     }
@@ -61,61 +55,48 @@ public class PlaceObject : MonoBehaviour
             {
                 /*
                 if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
-                {
-                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
-                }
+                { movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f); }
                 else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
-                {
-                    movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-                }
+                { movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f); }
                 */
 
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    if (objectPosX > 0)
-                    {
+                if (Input.GetKeyDown(KeyCode.LeftArrow)){
+                    if (objectPosX > 0){
                         movePoint += new Vector3(-1f, 0f, 0f);
-                        objectPosX -= 2;
-                    }
+                        objectPosX -= 2; }
                 }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    if (objectPosX < 12)
-                    {
+                else if (Input.GetKeyDown(KeyCode.RightArrow)){
+                    if (objectPosX < 12){
                         movePoint += new Vector3(1f, 0f, 0f);
-                        objectPosX += 2;
-                    }
+                        objectPosX += 2; }
                 }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    if (objectPosY < 8)
-                    {
+                else if (Input.GetKeyDown(KeyCode.UpArrow)){
+                    if (objectPosY < 8){
                         movePoint += new Vector3(0f, 1f, 0f);
-                        objectPosY += 2;
-                    }
+                        objectPosY += 2; }
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    if (objectPosY > 0)
-                    {
+                else if (Input.GetKeyDown(KeyCode.DownArrow)){
+                    if (objectPosY > 0){
                         movePoint += new Vector3(0f, -1f, 0f);
-                        objectPosY -= 2;
-                    }
+                        objectPosY -= 2; }
                 }
             }
+
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 GameObject.FindObjectOfType<CanvasGroup>().interactable = true; 
                 Destroy(gameObject);
             }
+
+
             else if (Input.GetKeyDown(KeyCode.Space))
             {
-                GameObject placeObject = gameObject;
-                string placeName = gameObject.name;
-                Debug.Log("Add: "+objectPosX+","+objectPosY+": "+placeName);
-                levelEditor.AddObject(objectPosX, objectPosY, placeName);
+                //string placeName = gameObject.name;
+
+                Debug.Log("Add: " + objectPosX + "," + objectPosY + ": " + gameObject.name);
+                levelEditor.AddObject(objectPosX, objectPosY, gameObject.name);
                 placed = true;
-                //levelEditor.AddAll(objectPosX, objectPosY, placeObject); 
                 GameObject.FindObjectOfType<CanvasGroup>().interactable = true;
                 //GameObject.Find("btnSpecial").GetComponent<Button>().enabled = true;
                 //GameObject.Find("btnObjects").GetComponent<Button>().enabled = true;
@@ -123,11 +104,6 @@ public class PlaceObject : MonoBehaviour
                 { EventSystem.current.SetSelectedGameObject(GameObject.Find("btnSpecial")); }
                 else
                 { EventSystem.current.SetSelectedGameObject(GameObject.Find("btnObjects")); }
-                //GameObject.Find("btnSpecial").GetComponent<Button>().enabled = true;
-
-
-
-
             }
 
         }
@@ -138,6 +114,8 @@ public class PlaceObject : MonoBehaviour
             levelEditor.CheckObject(objectPosX, objectPosY);
         }
 
+        //Try to change layering as sprite is move backwards
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 10 - objectPosY;
 
         transform.position = Vector3.MoveTowards(transform.position, movePoint, moveSpeed * Time.deltaTime);
 

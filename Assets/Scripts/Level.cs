@@ -6,6 +6,7 @@ public class Level : MonoBehaviour
 {
 
     public GameObject objectsPrefab;
+    public GameObject playerPrefab;
     public Sprite[] spriteList;
     Vector3 startPos;
     Vector3 currentPos;
@@ -13,7 +14,7 @@ public class Level : MonoBehaviour
     
     string[,] layout = new string[13, 9]    
     {
-        { "empty",      "empty" , "rubbish_bin" ,   "empty" , "luggage_02" ,    "empty" ,       "rubbish_bin" ,   "empty" , "empty" } ,
+        { "player",      "empty" , "rubbish_bin" ,   "empty" , "luggage_02" ,    "empty" ,       "rubbish_bin" ,   "empty" , "empty" } ,
         { "empty",      "empty" , "empty" ,         "empty" , "empty" ,         "empty" ,       "empty" ,         "empty" , "empty" },
         { "empty",      "empty" , "snack_machine" , "empty" , "empty" ,         "empty" ,       "luggage_06" ,    "empty" , "mask_dispenser" },
         { "empty",      "empty" , "barrier_left" ,  "empty" , "barrier_single" ,"empty" ,       "barrier_right" , "empty" , "empty" },
@@ -33,51 +34,111 @@ public class Level : MonoBehaviour
  
 void Start()
     {
-        startPos = new Vector3(-2.7f, -3.25f, 0f);
-        // Get layout Array
-        for (int x = 0; x < layout.GetLength(0); ++x)
-        { for (int y = 0; y < layout.GetLength(1); ++y)
-            {
-                if (layout[x, y] != "empty" )
-                {
-                    for (int i = 0; i < spriteList.Length; ++i)
-                    {
-                        if (spriteList[i].name == layout[x, y])
-                        {
-                            objectSprite = spriteList[i];
-                        }
+        startPos = new Vector3(-2.7f, -2.95f, 0f);
+        LoadSave.Load();
+        LevelData.openLevel = LoadSave.savedLevels[0];
 
+        string levelArray = "Objects ";
+        for (int a = 0; a < LevelData.openLevel.layout.GetLength(0); ++a)
+        {
+            for (int q = 0; q < LevelData.openLevel.layout.GetLength(1); ++q)
+            {
+                levelArray = levelArray + LevelData.openLevel.layout[a,q] + " , ";
+            }
+        }
+        Debug.Log(levelArray);
+
+                if (LevelData.openLevel.levelName != "")
+        {
+            for (int x = 0; x < LevelData.openLevel.layout.GetLength(0); ++x)
+            {
+                for (int y = 0; y < LevelData.openLevel.layout.GetLength(1); ++y)
+                {
+                    currentPos = startPos + new Vector3(x / 2, y / 2, 0);
+
+                    if (LevelData.openLevel.layout[x, y] != "empty")
+                    {
+                        if (LevelData.openLevel.layout[x, y] == "player.name")
+                        {
+                            GameObject player = Instantiate(playerPrefab, currentPos, Quaternion.identity);
+                            player.name = "player";
+                            player.GetComponent<SpriteRenderer>().sortingOrder = 11;
+                        }
+                        else if (LevelData.openLevel.layout[x, y] == "gate.name")
+                        {
+                            for (int i = 0; i < spriteList.Length; ++i)
+                            {
+                                if (spriteList[i].name.Contains("gate"))
+                                {
+                                    objectSprite = spriteList[i];
+                                    Debug.Log(objectSprite.name);
+                                }
+                            }
+                            GameObject newObject = Instantiate(objectsPrefab, currentPos, Quaternion.identity);
+                            newObject.name = objectSprite.name;
+                            newObject.GetComponent<SpriteRenderer>().sprite = objectSprite;
+                            newObject.GetComponent<SpriteRenderer>().sortingOrder = 10 - y;
+                        }
+                        else
+                        {
+                            for (int i = 0; i < spriteList.Length; ++i)
+                            {
+                                if (spriteList[i].name == LevelData.openLevel.layout[x, y])
+                                {
+                                    objectSprite = spriteList[i];
+                                    Debug.Log(objectSprite.name);
+                                }
+                            }
+                            GameObject newObject;
+                            if (objectSprite.name.Contains("_v"))
+                            {
+                                newObject = Instantiate(objectsPrefab, currentPos + new Vector3(0,0.5f,0), Quaternion.identity);
+                            }
+                            else
+                            {
+                                newObject = Instantiate(objectsPrefab, currentPos, Quaternion.identity);
+
+                            }
+                            newObject.name = objectSprite.name;
+                            newObject.GetComponent<SpriteRenderer>().sprite = objectSprite;
+                            newObject.GetComponent<SpriteRenderer>().sortingOrder = 10 - y;
+                        }
                     }
-                    currentPos = startPos + new Vector3(x/2, y/2, 0);
-                    GameObject newObject = Instantiate(objectsPrefab, currentPos, Quaternion.identity);
-                    newObject.name = objectSprite.name; //= objectName;
-                    newObject.GetComponent<SpriteRenderer>().sprite = objectSprite;
                 }
             }
         }
-        /*
-        if (File.Exists(FileName))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = new FileStream(FileName, FileMode.Open, FileAccess.Read);
-            PaR newData1 = (PaR)bf.Deserialize(file);
-            for (int i = 0; i < Object.Length; i++)
+        else {
+            /*  Working Code for using above array instead of loading from Saved Data
+             *  
+             *  */
+
+            // Get layout Array
+            for (int x = 0; x < layout.GetLength(0); ++x)
             {
-                Object[i].transform.position = new Vector3(newData1.OPX, newData1.OPY, newData1.OPZ);
+                for (int y = 0; y < layout.GetLength(1); ++y)
+                {
+                    if (layout[x, y] != "empty")
+                    {
+                        for (int i = 0; i < spriteList.Length; ++i)
+                        {
+                            if (spriteList[i].name == layout[x, y])
+                            {
+                                objectSprite = spriteList[i];
+                            }
+
+                        }
+                        currentPos = startPos + new Vector3(x / 2, y / 2, 0);
+                        GameObject newObject = Instantiate(objectsPrefab, currentPos, Quaternion.identity);
+                        newObject.name = objectSprite.name; //= objectName;
+                        newObject.GetComponent<SpriteRenderer>().sprite = objectSprite;
+                    }
+                }
             }
-            file.Close();
         }
-        */
-
-
-
+        
     }
 
 
-    public string[,] GetLayout()
-    {
-        return layout;
-    }
     // Update is called once per frame
     void Update()
     {
