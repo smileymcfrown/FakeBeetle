@@ -19,12 +19,12 @@ public class PlaceObject : MonoBehaviour
     bool placed;
     bool specialSelected;
     GameObject canvas;
-    SelectSpecial selectObject;
+    LevelEditor levelEditor;
 
     // Start is called before the first frame update
     void Start()
     {
-        selectObject = GetComponent<SelectSpecial>();
+        levelEditor = GetComponent<LevelEditor>();
         placed = false;
         movePoint = transform.position;
         GameObject.FindObjectOfType<CanvasGroup>().interactable = false;
@@ -113,9 +113,9 @@ public class PlaceObject : MonoBehaviour
                 GameObject placeObject = gameObject;
                 string placeName = gameObject.name;
                 Debug.Log("Add: "+objectPosX+","+objectPosY+": "+placeName);
-                selectObject.AddObject(objectPosX, objectPosY, placeName);
+                levelEditor.AddObject(objectPosX, objectPosY, placeName);
                 placed = true;
-                selectObject.AddAll(objectPosX, objectPosY, placeObject); 
+                //levelEditor.AddAll(objectPosX, objectPosY, placeObject); 
                 GameObject.FindObjectOfType<CanvasGroup>().interactable = true;
                 //GameObject.Find("btnSpecial").GetComponent<Button>().enabled = true;
                 //GameObject.Find("btnObjects").GetComponent<Button>().enabled = true;
@@ -135,9 +135,7 @@ public class PlaceObject : MonoBehaviour
         {
             Debug.Log(objectPosX + "," + objectPosY);
             //string layoutName;
-            selectObject.CheckObject(objectPosX, objectPosY);
-            //Debug.Log(layoutName);
-            selectObject.CheckAll(objectPosX, objectPosY);
+            levelEditor.CheckObject(objectPosX, objectPosY);
         }
 
 

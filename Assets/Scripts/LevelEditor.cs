@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectSpecial : MonoBehaviour
+public class LevelEditor : MonoBehaviour
 {
 
     //public GameObject specialPrefab;
@@ -20,9 +20,8 @@ public class SelectSpecial : MonoBehaviour
     public Vector3 placeOrigin;
     public string objectName;
 
-    public string[,] layout = new string[13,9];
-    public GameObject[,] layoutAll = new GameObject[13,9];
-
+    string[,] layout = new string[13,9];
+    
     bool barriers;
     //bool placing = false;
     // [SerializeField] private GameObject specialButton;
@@ -30,11 +29,14 @@ public class SelectSpecial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //specialPrefab.SetActive(true);
-        //specialRenderer.sprite = special[specialPos];
-        //objectsRenderer.sprite = objects[objectsPos];
-       
-        Debug.Log("START");
+        for (int i = 0; i < layout.GetLength(0); i++)
+        { for (int j = 0; j < layout.GetLength(1); j++) { layout[i, j] = "empty"; } }
+
+            //specialPrefab.SetActive(true);
+            //specialRenderer.sprite = special[specialPos];
+            //objectsRenderer.sprite = objects[objectsPos];
+
+            Debug.Log("START");
     }
 
     public void SelectLeft(string name)
@@ -126,23 +128,44 @@ public class SelectSpecial : MonoBehaviour
     public void AddAll(int posX, int posY, GameObject placeObject)
     {
         Debug.Log("AddAll");
-        layoutAll[posX, posY] = placeObject;
-        Debug.Log(placeObject.name);
+        //layoutAll[posX, posY] = placeObject;
+        //Debug.Log(placeObject.name);
     }
 
-    public void CheckAll(int posX, int posY)
-    {
-        string returnSelect = EventSystem.current.currentSelectedGameObject.name;
-        Vector3 checkerPos = new Vector3((posX*.5f), (posY*.5f)+1, 0);
-        GameObject checker = Instantiate(layoutAll[posX, posY], checkerPos, Quaternion.identity);
-        checker.name = "CHEKER";
-        EventSystem.current.SetSelectedGameObject(GameObject.Find("returnSelect"));
-    }
     public void CheckObject(int posX, int posY)
     {
-        string name;
-        name = layout[posX, posY];
-        Debug.Log(name);
+        string returnSelect = EventSystem.current.currentSelectedGameObject.name;
+        placeOrigin = new Vector3((posX*.5f), (posY*.5f)+1f, 0);
+        //string objName = layout[posX, posY];
+        //Debug.Log(objName);
+
+        Sprite placeSprite = objects[0];
+
+        Debug.Log("ObjName: " + objects[0].name);
+        Debug.Log("PlaceName: " + layout[posX, posY]);
+        for (int i = 0; i < objects.Length; i++)
+        {
+            if (objects[i].name == layout[posX, posY])
+            {
+                placeSprite = objects[i];
+            }
+       
+        }
+        Debug.Log("placeSprite: " + placeSprite.name);
+        //GameObject newObject = Instantiate(objectsPrefab, placeOrigin, Quaternion.identity);
+        //newObject.name = placeSprite.name; //= objectName;
+        //newObject.GetComponent<SpriteRenderer>().sprite = placeSprite;
+
+
+
+        //int index = ArrayUtility.IndexOf(objects, objName);
+        //Debug.Log(index);
+
+        // Sprite placeSprite = objects[index];
+        //GameObject checker = Instantiate(objectsPrefab, checkerPos, Quaternion.identity);
+        //checker.name = "CHEKER_"+ placeSprite.name;
+        //checker.GetComponent<SpriteRenderer>().sprite = placeSprite;
+        EventSystem.current.SetSelectedGameObject(GameObject.Find(returnSelect));
     }
 
     // Update is called once per frame
