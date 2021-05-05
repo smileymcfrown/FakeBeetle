@@ -24,8 +24,9 @@ public class LevelEditor : MonoBehaviour
     public Sprite gateSprite;
     public Button specialButton;
     public Button objectsButton;
-    int specialPos;
-    int objectsPos;
+    int specialPos; //Which object is currently displayed in the list
+    int objectsPos; //Ditto
+    string selectedMenu;  // To store the name of the currently selected menu item.
 
     //Save and Load Variables
     public InputField inputName;
@@ -35,10 +36,11 @@ public class LevelEditor : MonoBehaviour
     public GameObject objectsPrefab; //For items that can be moved around
     public GameObject togglePrefab; // For items that toggle between two locations
     Vector3 placeOrigin;  // Default location for objects to appear on the grid
-    string objectName;  // To store the name of the sprite as an identifier
-    GameObject player, gate; // Used to instantiate the toggle objects on start
-    bool barriers; // barrier objects are offset by 0.5units to visually appear between the grid.
+    int objectID = 10;
 
+ 
+    GameObject player, gate; // Used to instantiate the toggle objects on start
+ 
     bool gateRight = true; // For toggling two locations
     bool startLeft = true; //
 
@@ -56,9 +58,9 @@ public class LevelEditor : MonoBehaviour
             //specialRenderer.sprite = special[specialPos];
             //objectsRenderer.sprite = objects[objectsPos];
 
-        Debug.Log(placeOrigin);
+       // Debug.Log(placeOrigin);
         Vector3 newPos = placeOrigin + new Vector3(-3, -2, 0);
-        Debug.Log(newPos);
+        // Debug.Log(newPos);
 
         player = Instantiate(togglePrefab, newPos, Quaternion.identity);
         player.name = playerSprite.name;
@@ -73,6 +75,17 @@ public class LevelEditor : MonoBehaviour
         LevelData.openLevel.layout[12, 8] = gate.name;
         gate.GetComponent<SpriteRenderer>().sortingOrder = 2;
 
+
+        Vector3 pos = new Vector3(3, 5, 5);
+        Vector3 movePos = new Vector3(3, 4, 5);
+        Vector3 pos2 = new Vector3(3, -2, 5);
+        Vector3 movePos2 = new Vector3(3, -3, 5);
+
+        Vector3 result = movePos - pos;
+        Vector3 result2 = movePos - pos;
+        Vector3 show = movePos + result;
+        Vector3 show2 = movePos2 + result2;
+        Debug.Log("Result: "+ show + " : " + show2);
 
     }
 
@@ -94,14 +107,14 @@ public class LevelEditor : MonoBehaviour
         { */
 
 
-        objectName = EventSystem.current.currentSelectedGameObject.name;
+        selectedMenu = EventSystem.current.currentSelectedGameObject.name;
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            SelectLeft(objectName);
+            SelectLeft(selectedMenu);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            SelectRight(objectName);
+            SelectRight(selectedMenu);
         }
     }
 
@@ -221,21 +234,24 @@ public class LevelEditor : MonoBehaviour
     } */
 
     // PlaceObject instantiates selected object on the grid at the default position
-    public void PlaceObject(bool barrier)
+    public void PlaceObject()
     {
         
-        Sprite placeSprite;
+        Sprite placeSprite = objectsButton.GetComponent<Image>().sprite;
         GameObject newObject;
-        if (barrier == true) {
-            newObject = Instantiate(objectsPrefab, placeOrigin + new Vector3(0,0.5f,0), Quaternion.identity);
-            placeSprite = specialButton.GetComponent<Image>().sprite;
-        } else  {
-            newObject = Instantiate(objectsPrefab, placeOrigin, Quaternion.identity);
-            placeSprite = objectsButton.GetComponent<Image>().sprite;
-        }
+        
+        if (placeSprite.name.Contains("_v"))
+            { newObject = Instantiate(objectsPrefab, placeOrigin + new Vector3(0,0.5f,0), Quaternion.identity); }
+        else
+            { newObject = Instantiate(objectsPrefab, placeOrigin, Quaternion.identity); }
 
-        newObject.name = placeSprite.name;
+        objectID++;
+        newObject.name = objectID + "_" +  placeSprite.name;
         newObject.GetComponent<SpriteRenderer>().sprite = placeSprite;
+
+
+
+
     }
 
     // Add object name at chosen position to the level layout 2D array.
