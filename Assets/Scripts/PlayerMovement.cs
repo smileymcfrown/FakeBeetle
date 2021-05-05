@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 5f;
     public Transform movePoint;
-    public string moveObject;
+    public Vector3 objectMovePoint = new Vector3(0,0,0);
+    public string moveObject = "nope";
 
     int playerPosX;
     int playerPosY;
@@ -69,10 +70,12 @@ public class PlayerMovement : MonoBehaviour
 
 
             }
-            Debug.Log(moveObject);
-            if (moveObject != "null")
+            Debug.Log("moveObject: " + moveObject);
+            if (moveObject != "nope")
             {
-                Vector3 objectMovePoint = GameObject.Find(moveObject).transform.position + (movePoint.position - transform.position);
+                Debug.Log("INSIDE " + moveObject);
+                GameObject shuffle = GameObject.Find(moveObject);
+                objectMovePoint = shuffle.transform.position + (movePoint.position - transform.position);
             }
 
         }
@@ -94,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     }
     bool MovementCheck(string direction)
     {
-        moveObject = "";
+        moveObject = "nope";
         Debug.Log(direction);
         Debug.Log("Player: " + playerPosX+","+playerPosY + " New: " + newPosX + "," +newPosY);
 
@@ -185,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
             //Code to move luggage object forward or possibly set a Bool
             //that triggers code inside player movement to move luggage object
             playerPosX = newPosX; playerPosY = newPosY;
+            Debug.Log("CHECK " + moveObject);
             moveObject = layout[newPosX, newPosY];
 
             

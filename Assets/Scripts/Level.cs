@@ -109,6 +109,7 @@ void Start()
 
                                 }
                                 newObject.name = LevelData.openLevel.layout[x, y].Substring(0, 3) + objectSprite.name;
+                                Debug.Log("WOOP " + newObject.name);
                                 newObject.GetComponent<SpriteRenderer>().sprite = objectSprite;
                                 newObject.GetComponent<SpriteRenderer>().sortingOrder = 10 - y;
                             }
