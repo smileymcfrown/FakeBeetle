@@ -11,6 +11,7 @@ public class Level : MonoBehaviour
     Vector3 startPos;
     Vector3 currentPos;
     Sprite objectSprite;
+    int currentLevel = 0;
     
     string[,] layout = new string[13, 9]    
     {
@@ -38,6 +39,7 @@ void Start()
         LoadSave.Load();
         LevelData.openLevel = LoadSave.savedLevels[0];
 
+        // Just code to show the objects in the array
         string levelArray = "Objects ";
         for (int a = 0; a < LevelData.openLevel.layout.GetLength(0); ++a)
         {
@@ -48,7 +50,9 @@ void Start()
         }
         Debug.Log(levelArray);
 
-                if (LevelData.openLevel.levelName != "")
+
+
+       if (LevelData.openLevel.levelName != "")
         {
             for (int x = 0; x < LevelData.openLevel.layout.GetLength(0); ++x)
             {
@@ -58,13 +62,13 @@ void Start()
 
                     if (LevelData.openLevel.layout[x, y] != "empty")
                     {
-                        if (LevelData.openLevel.layout[x, y] == "player.name")
+                        if (LevelData.openLevel.layout[x, y] == "player")
                         {
                             GameObject player = Instantiate(playerPrefab, currentPos, Quaternion.identity);
                             player.name = "player";
                             player.GetComponent<SpriteRenderer>().sortingOrder = 11;
                         }
-                        else if (LevelData.openLevel.layout[x, y] == "gate.name")
+                        else if (LevelData.openLevel.layout[x, y] == "gate")
                         {
                             for (int i = 0; i < spriteList.Length; ++i)
                             {
@@ -81,27 +85,33 @@ void Start()
                         }
                         else
                         {
+                            bool found = false;
                             for (int i = 0; i < spriteList.Length; ++i)
                             {
-                                if (spriteList[i].name == LevelData.openLevel.layout[x, y])
+                                if (spriteList[i].name == LevelData.openLevel.layout[x, y].Substring(3))
                                 {
                                     objectSprite = spriteList[i];
                                     Debug.Log(objectSprite.name);
+                                    found = true;
                                 }
                             }
-                            GameObject newObject;
-                            if (objectSprite.name.Contains("_v"))
+                            if (found)
                             {
-                                newObject = Instantiate(objectsPrefab, currentPos + new Vector3(0,0.5f,0), Quaternion.identity);
-                            }
-                            else
-                            {
-                                newObject = Instantiate(objectsPrefab, currentPos, Quaternion.identity);
+                                GameObject newObject;
+                            
+                                if (objectSprite.name.Contains("_v"))
+                                {
+                                    newObject = Instantiate(objectsPrefab, currentPos + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                                }
+                                else
+                                {
+                                    newObject = Instantiate(objectsPrefab, currentPos, Quaternion.identity);
 
+                                }
+                                newObject.name = objectSprite.name;
+                                newObject.GetComponent<SpriteRenderer>().sprite = objectSprite;
+                                newObject.GetComponent<SpriteRenderer>().sortingOrder = 10 - y;
                             }
-                            newObject.name = objectSprite.name;
-                            newObject.GetComponent<SpriteRenderer>().sprite = objectSprite;
-                            newObject.GetComponent<SpriteRenderer>().sortingOrder = 10 - y;
                         }
                     }
                 }
@@ -138,7 +148,13 @@ void Start()
         
     }
 
+    public void LevelComplete()
+    {
+        // Some code to finish the level, update turns remaining, update points,
+        // and update currentLevel to go to the next level in whatever array someone makes
+        // Then load the level complete screen.
 
+    }
     // Update is called once per frame
     void Update()
     {
