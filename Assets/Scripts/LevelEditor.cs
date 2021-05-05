@@ -30,6 +30,7 @@ public class LevelEditor : MonoBehaviour
 
     //Save and Load Variables
     public InputField inputName;
+    public InputField inputTurns;
 
 
     // Variables used to instantiate chosen object at default position with object's sprite name
@@ -49,7 +50,7 @@ public class LevelEditor : MonoBehaviour
     void Start()
     {
         LevelData.openLevel = new LevelData();
-        placeOrigin = new Vector3(-2f, 0, 0);
+        placeOrigin = new Vector3(-2f, 0.3f, 0);
 
         for (int i = 0; i < LevelData.openLevel.layout.GetLength(0); i++)
         { for (int j = 0; j < LevelData.openLevel.layout.GetLength(1); j++) { LevelData.openLevel.layout[i, j] = "empty"; } }
@@ -58,10 +59,7 @@ public class LevelEditor : MonoBehaviour
             //specialRenderer.sprite = special[specialPos];
             //objectsRenderer.sprite = objects[objectsPos];
 
-       // Debug.Log(placeOrigin);
         Vector3 newPos = placeOrigin + new Vector3(-3, -2, 0);
-        // Debug.Log(newPos);
-
         player = Instantiate(togglePrefab, newPos, Quaternion.identity);
         player.name = playerSprite.name;
         player.GetComponent<SpriteRenderer>().sprite = playerSprite;
@@ -240,9 +238,9 @@ public class LevelEditor : MonoBehaviour
         
         Sprite placeSprite = objectsButton.GetComponent<Image>().sprite;
         GameObject newObject;
-        
+
         if (placeSprite.name.Contains("_v"))
-            { newObject = Instantiate(objectsPrefab, placeOrigin + new Vector3(0,0.5f,0), Quaternion.identity); }
+            { newObject = Instantiate(objectsPrefab, placeOrigin + new Vector3(0, 0.5f, 0), Quaternion.identity); }
         else
             { newObject = Instantiate(objectsPrefab, placeOrigin, Quaternion.identity); }
 
@@ -258,20 +256,33 @@ public class LevelEditor : MonoBehaviour
     // Add object name at chosen position to the level layout 2D array.
     public void AddObject(int posX, int posY, string name)
     {
-        Debug.Log("AddObject: "+posX+","+posY+": "+name);
-        LevelData.openLevel.layout[posX, posY] = name;
-        Debug.Log(LevelData.openLevel.layout[posX, posY]);
+        Debug.Log("AddObject: " + posX + "," + posY + ": " + name);
+        if (LevelData.openLevel.layout[posX, posY] == "empty")
+        {
+            if (name.Contains("detector")) { LevelData.openLevel.layout[posX - 2, posY - 1] = "x-ray"; }
+            LevelData.openLevel.layout[posX, posY] = name;
+
+            Debug.Log(LevelData.openLevel.layout[posX, posY]);
+        }
     }
 
     public void SaveLayout()
     {
         // Make sure the is a name for this level.
-        if (inputName.text != null)
+        if (inputName.text != null || inputTurns.text != null)
         {
             // ** Check to see if name is already used and give error if so.
             // or maybe just check if it's one of the 3 main levels and give an error otherwise overwrite.
+            if(inputName.text.Contains("razil"))
+            { LevelData.openLevel.background = "1st_level_brazil"; }
+            else if(inputName.text.Contains("rance"))
+            { LevelData.openLevel.background = "2nd_level_france"; }
+            else if (inputName.text.Contains("gypt"))
+            { LevelData.openLevel.background = "3rd_level_egypt"; }
 
             LevelData.openLevel.levelName = inputName.text;
+
+            LevelData.openLevel.turns = int.Parse(inputTurns.text);
             Debug.Log(LevelData.openLevel.levelName);
             LoadSave.Save();
             // ** Update Saved Level List with new name

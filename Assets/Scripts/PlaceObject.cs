@@ -16,7 +16,6 @@ public class PlaceObject : MonoBehaviour
     int newPosX;
     int newPosY;
     bool placed;
-    bool specialSelected;
     GameObject canvas;
     LevelEditor levelEditor;
 
@@ -26,14 +25,14 @@ public class PlaceObject : MonoBehaviour
         levelEditor = GetComponent<LevelEditor>();
         placed = false;
         movePoint = transform.position;
+
+        if (gameObject.name.Contains("_v"){
+            objectPosY = 5;
+        } 
+
         GameObject.FindObjectOfType<CanvasGroup>().interactable = false;
-        
-        if(EventSystem.current.currentSelectedGameObject.name == "btnSpecial")
-        { specialSelected = true; }
-        else { specialSelected = false; }
         EventSystem.current.SetSelectedGameObject(GameObject.Find("Grid"));
         Debug.Log(EventSystem.current.currentSelectedGameObject.name);
-        //GameObject.Find("btnSpecial").GetComponent<Button>().enabled = false;
         //GameObject.Find("btnObjects").GetComponent<Button>().enabled = false;
 
 
@@ -100,10 +99,7 @@ public class PlaceObject : MonoBehaviour
                 GameObject.FindObjectOfType<CanvasGroup>().interactable = true;
                 //GameObject.Find("btnSpecial").GetComponent<Button>().enabled = true;
                 //GameObject.Find("btnObjects").GetComponent<Button>().enabled = true;
-                if (specialSelected == true)
-                { EventSystem.current.SetSelectedGameObject(GameObject.Find("btnSpecial")); }
-                else
-                { EventSystem.current.SetSelectedGameObject(GameObject.Find("btnObjects")); }
+                EventSystem.current.SetSelectedGameObject(GameObject.Find("btnObjects"));
             }
 
         }

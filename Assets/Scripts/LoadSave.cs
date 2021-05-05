@@ -10,7 +10,14 @@ public static class LoadSave
 
     public static void Save()
     {
-        savedLevels.Add(LevelData.openLevel);
+        if (LevelData.openLevel.levelName.Contains("razil"))
+        { savedLevels.Insert(0,LevelData.openLevel); }
+        else if (LevelData.openLevel.levelName.Contains("rance"))
+        { savedLevels.Insert(1, LevelData.openLevel); }
+        else if (LevelData.openLevel.levelName.Contains("gypt"))
+        { savedLevels.Insert(2, LevelData.openLevel); }
+        else { savedLevels.Add(LevelData.openLevel); }
+
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/levels.ld");
         bf.Serialize(file, LoadSave.savedLevels);

@@ -351,4 +351,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2fb5cef41df593649925ef083374d47f, type: 3}
   - {fileID: 21300000, guid: 8dc6bcc4b0aa94144ac8a4227bb8a5ce, type: 3}
   - {fileID: 21300000, guid: 47c7644d8482f9f4ab5e5a7b6c4f9706, type: 3}
-  - {fileID: -8642395471077912169, guid: a1a186b4b8344334eb43603a7f2a4d00, type: 3}
+  gateList: []

@@ -8,6 +8,7 @@ public class Level : MonoBehaviour
     public GameObject objectsPrefab;
     public GameObject playerPrefab;
     public Sprite[] spriteList;
+    public Sprite[] gateList;
     Vector3 startPos;
     Vector3 currentPos;
     Sprite objectSprite;
@@ -39,6 +40,7 @@ void Start()
         LoadSave.Load();
         LevelData.openLevel = LoadSave.savedLevels[0];
 
+
         // Just code to show the objects in the array
         string levelArray = "Objects ";
         for (int a = 0; a < LevelData.openLevel.layout.GetLength(0); ++a)
@@ -50,6 +52,9 @@ void Start()
         }
         Debug.Log(levelArray);
 
+        /*
+         * Need to put code for switching the background/environment image here.
+         */
 
 
        if (LevelData.openLevel.levelName != "")
@@ -70,6 +75,7 @@ void Start()
                         }
                         else if (LevelData.openLevel.layout[x, y] == "gate")
                         {
+                            /* This was for getting the gate sprite from the sprite list, but now there are 3 gates
                             for (int i = 0; i < spriteList.Length; ++i)
                             {
                                 if (spriteList[i].name.Contains("gate"))
@@ -77,7 +83,17 @@ void Start()
                                     objectSprite = spriteList[i];
                                     Debug.Log(objectSprite.name);
                                 }
-                            }
+                            } 
+                            */
+
+                            // Adding one of three gate sprites
+                            if (LevelData.openLevel.levelName.Contains("razil"))
+                            { objectSprite = gateList[0]; }
+                            else if (LevelData.openLevel.levelName.Contains("rance"))
+                            { objectSprite = gateList[1]; }
+                            else if (LevelData.openLevel.levelName.Contains("gypt"))
+                            { objectSprite = gateList[2]; }
+
                             GameObject newObject = Instantiate(objectsPrefab, currentPos, Quaternion.identity);
                             newObject.name = objectSprite.name;
                             newObject.GetComponent<SpriteRenderer>().sprite = objectSprite;
