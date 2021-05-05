@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 5f;
     public Transform movePoint;
+    public string moveObject;
 
     int playerPosX;
     int playerPosY;
@@ -177,6 +178,8 @@ public class PlayerMovement : MonoBehaviour
             //Code to move luggage object forward or possibly set a Bool
             //that triggers code inside player movement to move luggage object
             playerPosX = newPosX; playerPosY = newPosY;
+            moveObject = layout[newPosX, newPosY];
+            
             return true;
         }
         else if (layout[newPosX, newPosY].Contains("snack"))
