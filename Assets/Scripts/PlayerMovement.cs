@@ -5,18 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    enum stuffInGird{
-        nothing = 0,
-        obstacle,
-        box,
-        snack,
-        mask,
-        gate,
-        detector
-
-
-    }
-
     public float moveSpeed = 5f;
     public Transform movePoint;
 
@@ -24,77 +12,30 @@ public class PlayerMovement : MonoBehaviour
     int playerPosY;
     int newPosX;
     int newPosY;
-    //Level levelScript;
-
-    //stuffInGird[,] grid = new stuffInGird[10, 10];
     string[,] layout;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
-        //levelScript = GameObject.Find("Main Camera").GetComponent<Level>();
-        //layout = GameObject.Find("Main Camera").GetComponent<Level>().layout;
-        //layout = levelScript.GetLayout();
+        // Load the variable layout with the current map.
+        // layout will be used to adjust the map and keep track of the objects.
+
         layout = LevelData.openLevel.layout;
-        Debug.Log("Got the array: " + layout[0, 2]);
+
         movePoint.parent = null;
+
         playerPosX = 0;
         playerPosY = 0;
-
-        /* Need to add player sprite
-        
-        for (int x = 0; x < layout.GetLength(0); ++x)
-        {
-            for (int y = 0; y < layout.GetLength(1); ++y)
-            { if (layout[x, y] == "player") { playerPosX = x; playerPosY = y; } }
-        }*/
-        
-            /*
-            if(grid[newX, newY]  == stuffInGird.nothing)
-            {
-                playersPositionY++;
-
-                Vector2 pos = new Vector2(playersPositionX * 1f + 0.5f, playersPositionY * 1f + 0.5f);
-                transform.position = Vector3.MoveTowards(transform.position, pos, moveSpeed * Time.deltaTime);
-            }
-            else if(grid[newX, newY] == stuffInGird.obstacle)
-            {
-                //nothing
-            }
-            else if(grid[newX, newY] == stuffInGird.box)
-            {
-                //move box sprite to new player position + 1
-                    //get name of prefab in position, transform prefab position + 1
-                //move player position
-            }
-            else if (grid[newX, newY] == stuffInGird.snack)
-            {
-                //Snack = true
-                //(Turns = Turns + X) or done at end of level
-                //player doesn't move
-            }
-            else if (grid[newX, newY] == stuffInGird.mask)
-            {
-                //Mask = true
-                //(Turns = Turns + X) or done at end of level
-                //player doesn't move
-            }
-            else if (grid[newX, newY] == stuffInGird.detector)
-            {
-                //Mask = true
-                //(Turns = Turns + X) or done at end of level
-                //player doesn't move
-            } 
-            */
-
-            // grid[0, 0] = stuffInGird.player;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-       
+       // On axis movement, MovementCheck() is called to check for any obstacles it currently returns a bool
+       // maybe it should return a string advising not only whether to move but also if another object needs to move.
+
+
         if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
         {
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
@@ -229,10 +170,9 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("HEY!  "+layout[newPosX, newPosY]);
 
 
-        //if (layout[newPosX, newPosY].Contains("rubbish")) { return false; }
-        //else if (layout[newPosX, newPosY].Contains("plant")) { return false; }
-
-        if (layout[newPosX, newPosY].Contains("luggage"))
+        if (layout[newPosX, newPosY].Contains("rubbish")) { return false; }
+        else if (layout[newPosX, newPosY].Contains("plant")) { return false; }
+        else if (layout[newPosX, newPosY].Contains("luggage"))
         {
             //Code to move luggage object forward or possibly set a Bool
             //that triggers code inside player movement to move luggage object
@@ -244,12 +184,13 @@ public class PlayerMovement : MonoBehaviour
             //Code for the Snack Machine
             return false;
         }
-        //else if (layout[newPosX, newPosY].Contains("detector"))
-        //{
+        else if (layout[newPosX, newPosY].Contains("detector"))
+        {
             // Code for emptying pockets into X-Ray machine
             // before walking through metal detector (see other "detector" code above)
-        //    return false;
-        //}
+            //    return false;
+            return true;
+        }
         else if (layout[newPosX, newPosY].Contains("mask"))
         {
             //Code for getting a mask
@@ -275,7 +216,7 @@ public class PlayerMovement : MonoBehaviour
 
 //vector2 pos = vector2 (x * 1 + 0.5,  y * 1 + 0.5);
 
-
+// Below is some code that doesn't work but I want to find out why... later.
 /*
  *   Gav's code that didn't work.. ignore
  * 

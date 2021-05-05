@@ -24,21 +24,23 @@ public class LevelEditor : MonoBehaviour
     public Sprite gateSprite;
     public Button specialButton;
     public Button objectsButton;
-    public int specialPos;
-    public int objectsPos;
+    int specialPos;
+    int objectsPos;
+
+    //Save and Load Variables
+    public InputField inputName;
+
+
     // Variables used to instantiate chosen object at default position with object's sprite name
-    public GameObject objectsPrefab;
-    public GameObject togglePrefab;
+    public GameObject objectsPrefab; //For items that can be moved around
+    public GameObject togglePrefab; // For items that toggle between two locations
+    Vector3 placeOrigin;  // Default location for objects to appear on the grid
+    string objectName;  // To store the name of the sprite as an identifier
+    GameObject player, gate; // Used to instantiate the toggle objects on start
+    bool barriers; // barrier objects are offset by 0.5units to visually appear between the grid.
 
-    public Vector3 placeOrigin;
-    public string objectName;
-
-    GameObject player, gate;
-
-
-    bool barriers;
-    bool gateRight = true;
-    bool startLeft = true;
+    bool gateRight = true; // For toggling two locations
+    bool startLeft = true; //
 
     //bool placing = false;
  
@@ -73,6 +75,36 @@ public class LevelEditor : MonoBehaviour
 
 
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        // This code was for setting if the generated object should be offset or not.
+        // Possibly obsolete.
+
+        /* if (EventSystem.current.currentSelectedGameObject.name == "Grid")
+        { }
+        else { 
+        if(EventSystem.current.currentSelectedGameObject.name == "btnSpecial")
+        { barriers = true; }
+        else if (EventSystem.current.currentSelectedGameObject.name == "btnObjects")
+        { barriers = false; }
+        else
+        { */
+
+
+        objectName = EventSystem.current.currentSelectedGameObject.name;
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            SelectLeft(objectName);
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            SelectRight(objectName);
+        }
+    }
+
 
     public void ToggleStart()
     {
@@ -173,8 +205,8 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
-    // Keeping old code of PlaceSpecial just in case until testing complete. Code combined into PlaceObject below.
-    /* public void PlaceSpecial()
+    /* Keeping old code of PlaceSpecial just in case until testing complete. Code combined into PlaceObject below.
+        public void PlaceSpecial()
     {
         // Sprite placeSprite = specialRenderer.sprite;
         Sprite placeSprite = specialButton.GetComponent<Image>().sprite;
@@ -206,7 +238,7 @@ public class LevelEditor : MonoBehaviour
         newObject.GetComponent<SpriteRenderer>().sprite = placeSprite;
     }
 
-    // Add object name at chosen position to the level layout 
+    // Add object name at chosen position to the level layout 2D array.
     public void AddObject(int posX, int posY, string name)
     {
         Debug.Log("AddObject: "+posX+","+posY+": "+name);
@@ -216,27 +248,44 @@ public class LevelEditor : MonoBehaviour
 
     public void SaveLayout()
     {
-        string inputName = GameObject.Find("txtLevelName").GetComponent<InputField>().text;
-        if (inputName != null)
+        // Make sure the is a name for this level.
+        if (inputName.text != null)
         {
-            LevelData.openLevel.levelName = inputName;
+            // ** Check to see if name is already used and give error if so.
+            // or maybe just check if it's one of the 3 main levels and give an error otherwise overwrite.
+
+            LevelData.openLevel.levelName = inputName.text;
             Debug.Log(LevelData.openLevel.levelName);
             LoadSave.Save();
-            // Access LevelData function
+            // ** Update Saved Level List with new name
         }
         else
         {
-            // This code should be changed to display an error message to the player.
+            // ** This code should be changed to display an error message to the player.
             Debug.Log("You must enter a name to save the level");
         }
         
     }
 
+    public void LoadLayout(int levelIndex)
+    {
+            // ** Load item chosen from the list
+            
+            // Get level data from the list of levels and put it in "openLevel"
+            LevelData.openLevel = LoadSave.savedLevels[levelIndex];
+            
+            // All level data should now be accessible from whatever script using
+            // LevelData.openLevel.(levelName, layout[,], turns, background
+    }
+
+
+
+
     // Test function to check AddObject is working.. can be deleted after testing!
     public void CheckObject(int posX, int posY)
     {
         string returnSelect = EventSystem.current.currentSelectedGameObject.name;
-        placeOrigin = new Vector3((posX*.5f), (posY*.5f)+1f, 0);
+        placeOrigin = new Vector3((posX * .5f), (posY * .5f) + 1f, 0);
         //string objName = LevelData.openLevel.layout[posX, posY];
         //Debug.Log(objName);
 
@@ -250,7 +299,7 @@ public class LevelEditor : MonoBehaviour
             {
                 placeSprite = objects[i];
             }
-       
+
         }
         Debug.Log("placeSprite: " + placeSprite.name);
         //GameObject newObject = Instantiate(objectsPrefab, placeOrigin, Quaternion.identity);
@@ -267,71 +316,5 @@ public class LevelEditor : MonoBehaviour
         //checker.name = "CHEKER_"+ placeSprite.name;
         //checker.GetComponent<SpriteRenderer>().sprite = placeSprite;
         EventSystem.current.SetSelectedGameObject(GameObject.Find(returnSelect));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /* if (EventSystem.current.currentSelectedGameObject.name == "Grid")
-        { }
-        else { 
-        if(EventSystem.current.currentSelectedGameObject.name == "btnSpecial")
-        { barriers = true; }
-        else if (EventSystem.current.currentSelectedGameObject.name == "btnObjects")
-        { barriers = false; }
-        else
-        { */
-
-
-
-        //if (EventSystem.current.currentSelectedGameObject.name != null)
-        //{
-            objectName = EventSystem.current.currentSelectedGameObject.name;
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                SelectLeft(objectName);
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                SelectRight(objectName);
-            }
-        //}
-
-        
-
-
-        /*
-        Debug.Log(EventSystem.current.currentSelectedGameObject.name);
-        if (EventSystem.current.currentSelectedGameObject.name == "btnSpecial")
-        {
-            Debug.Log("Special Selected");
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                SelectLeft(true);
-                //EventSystem.current.SetSelectedGameObject();
-                //Image buttonSprite = GameObject.Find("btnSpecial").GetComponent<Image>();
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                SelectRight(true);
-            }
-
-        }
-        else if (EventSystem.current.currentSelectedGameObject.name == "btnObjects")
-        {
-            Debug.Log("Objects Selected");
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                ObjectsLeft();
-                //EventSystem.current.SetSelectedGameObject();
-                //Image buttonSprite = GameObject.Find("btnSpecial").GetComponent<Image>();
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                ObjectsRight();
-            }
-
-        }
-        */
     }
 }
