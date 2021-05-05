@@ -26,7 +26,7 @@ public class PlaceObject : MonoBehaviour
         placed = false;
         movePoint = transform.position;
 
-        if (gameObject.name.Contains("_v"){
+        if (gameObject.name.Contains("_v")){
             objectPosY = 5;
         } 
 
