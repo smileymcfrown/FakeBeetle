@@ -108,7 +108,7 @@ void Start()
                                     newObject = Instantiate(objectsPrefab, currentPos, Quaternion.identity);
 
                                 }
-                                newObject.name = objectSprite.name;
+                                newObject.name = LevelData.openLevel.layout[x, y].Substring(0, 3) + objectSprite.name;
                                 newObject.GetComponent<SpriteRenderer>().sprite = objectSprite;
                                 newObject.GetComponent<SpriteRenderer>().sortingOrder = 10 - y;
                             }

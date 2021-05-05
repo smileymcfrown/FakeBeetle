@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
         {
+                 
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
                 int moveX = (int)Input.GetAxisRaw("Horizontal");
@@ -68,7 +69,12 @@ public class PlayerMovement : MonoBehaviour
 
 
             }
-            
+            Debug.Log(moveObject);
+            if (moveObject != "null")
+            {
+                Vector3 objectMovePoint = GameObject.Find(moveObject).transform.position + (movePoint.position - transform.position);
+            }
+
         }
 
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
@@ -88,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
     }
     bool MovementCheck(string direction)
     {
+        moveObject = "";
         Debug.Log(direction);
         Debug.Log("Player: " + playerPosX+","+playerPosY + " New: " + newPosX + "," +newPosY);
 
@@ -170,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.Log("HEY!  "+layout[newPosX, newPosY]);
 
-
+        
         if (layout[newPosX, newPosY].Contains("rubbish")) { return false; }
         else if (layout[newPosX, newPosY].Contains("plant")) { return false; }
         else if (layout[newPosX, newPosY].Contains("luggage"))
@@ -179,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
             //that triggers code inside player movement to move luggage object
             playerPosX = newPosX; playerPosY = newPosY;
             moveObject = layout[newPosX, newPosY];
+
             
             return true;
         }
