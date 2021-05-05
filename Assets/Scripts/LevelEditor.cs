@@ -76,6 +76,7 @@ public class LevelEditor : MonoBehaviour
         gate.GetComponent<SpriteRenderer>().sortingOrder = 2;
 
 
+        // Code I used to check how vectors work - keep until player/object movement is fixed.
         Vector3 pos = new Vector3(3, 5, 5);
         Vector3 movePos = new Vector3(3, 4, 5);
         Vector3 pos2 = new Vector3(3, -2, 5);
