@@ -84,7 +84,8 @@ public class PlaceObject : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                GameObject.FindObjectOfType<CanvasGroup>().interactable = true; 
+                GameObject.FindObjectOfType<CanvasGroup>().interactable = true;
+                EventSystem.current.SetSelectedGameObject(GameObject.Find("btnObjects"));
                 Destroy(gameObject);
             }
 

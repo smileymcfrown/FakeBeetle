@@ -24,8 +24,8 @@ public class LevelEditor : MonoBehaviour
     public Sprite gateSprite;
     public Button specialButton;
     public Button objectsButton;
-    int specialPos; //Which object is currently displayed in the list
-    int objectsPos; //Ditto
+    int specialPos = 0; //Which object is currently displayed in the list
+    int objectsPos = 0; //Ditto
     string selectedMenu;  // To store the name of the currently selected menu item.
 
     //Save and Load Variables
@@ -72,6 +72,10 @@ public class LevelEditor : MonoBehaviour
         gate.GetComponent<SpriteRenderer>().sprite = gateSprite;
         LevelData.openLevel.layout[12, 8] = gate.name;
         gate.GetComponent<SpriteRenderer>().sortingOrder = 2;
+
+        //Not sure why but object button displays wrong object on start
+        // objectsButton.GetComponent<Image>().sprite = objects[objectsPos];
+
 
 
         // Code I used to check how vectors work - keep until player/object movement is fixed.
