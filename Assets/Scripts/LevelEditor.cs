@@ -8,29 +8,29 @@ public class LevelEditor : MonoBehaviour
 {
 
     // Create variables to save level data
-    
+
     // string[,] layout = new string[13, 9];
     // public string levelName;
     // public int turns;
     // public string background;
-    
+
 
 
     // Variables used for scrolling through object sprites
     // before selecting. Maybe combine all sprites into one button? Separate by name?
-    public Sprite[] special;
+    public Sprite[] icons;
     public Sprite[] objects;
     public Sprite playerSprite;
     public Sprite gateSprite;
-    public Button specialButton;
     public Button objectsButton;
-    int specialPos = 0; //Which object is currently displayed in the list
-    int objectsPos = 0; //Ditto
+    int objectsPos = 0; //Which object is currently displayed in the list
     string selectedMenu;  // To store the name of the currently selected menu item.
+    GameObject lastSelected; // To return focus to menu if mouse is clicked elsewhere
 
     //Save and Load Variables
-    public InputField inputName;
-    public InputField inputTurns;
+    public InputField inputName, inputTurns;
+    public Image startImage, gateImage, objectsLeft, objectsRight;
+    
 
 
     // Variables used to instantiate chosen object at default position with object's sprite name
@@ -45,7 +45,7 @@ public class LevelEditor : MonoBehaviour
     bool gateRight = true; // For toggling two locations
     bool startLeft = true; //
 
-    //bool placing = false;
+    bool placing = false;
  
     void Start()
     {
@@ -66,7 +66,7 @@ public class LevelEditor : MonoBehaviour
         LevelData.openLevel.layout[0, 0] = player.name;
         player.GetComponent<SpriteRenderer>().sortingOrder = 11;
 
-        newPos = placeOrigin + new Vector3(3, 3, 0);
+        newPos = placeOrigin + new Vector3(3, 2.8f, 0);
         gate = Instantiate(togglePrefab, newPos, Quaternion.identity);
         gate.name = gateSprite.name;
         gate.GetComponent<SpriteRenderer>().sprite = gateSprite;
@@ -95,7 +95,7 @@ public class LevelEditor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         // This code was for setting if the generated object should be offset or not.
         // Possibly obsolete.
 
@@ -108,9 +108,48 @@ public class LevelEditor : MonoBehaviour
         { barriers = false; }
         else
         { */
+        
+        
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            EventSystem.current.SetSelectedGameObject(lastSelected);
+            selectedMenu = EventSystem.current.currentSelectedGameObject.name;
+        }
+        else
+        {
+            lastSelected = EventSystem.current.currentSelectedGameObject;
+            selectedMenu = EventSystem.current.currentSelectedGameObject.name;
+         }
+        if (selectedMenu == "btnObjects")
+        {
+            startImage.sprite = icons[0];
+            gateImage.sprite = icons[2];
+            objectsLeft.sprite = icons[6];
+            objectsRight.sprite = icons[7];
+        }
+        else if (selectedMenu == "toggleStart")
+        {
+            
+            startImage.sprite = icons[1];
+            gateImage.sprite = icons[2];
+            objectsLeft.sprite = icons[4];
+            objectsRight.sprite = icons[5];
+        }
+        else if (selectedMenu == "toggleGate")
+        {
+            startImage.sprite = icons[0];
+            gateImage.sprite = icons[3];
+            objectsLeft.sprite = icons[4];
+            objectsRight.sprite = icons[5];
+        }
+        else 
+        {
+            startImage.sprite = icons[0];
+            gateImage.sprite = icons[2];
+            objectsLeft.sprite = icons[4];
+            objectsRight.sprite = icons[5];
+        }
 
-
-        selectedMenu = EventSystem.current.currentSelectedGameObject.name;
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             SelectLeft(selectedMenu);
@@ -188,36 +227,24 @@ public class LevelEditor : MonoBehaviour
     public void SelectLeft(string name)
     {
         Debug.Log("Left: " + name);
-        if (name == "btnSpecial")
-        {
-            if (specialPos == 0) { specialPos = special.Length - 1; }
-            else { specialPos--; }
-
-            specialButton.GetComponent<Image>().sprite = special[specialPos];
-
-        }
-        else if(name == "btnObjects")
+        if(name == "btnObjects")
         {
             if (objectsPos == 0) { objectsPos = objects.Length - 1; }
             else { objectsPos--; }
             objectsButton.GetComponent<Image>().sprite = objects[objectsPos];
+            objectsLeft.sprite = icons[8];
         }
     }
 
     public void SelectRight(string name)
     {
         Debug.Log("Right: " + name);
-        if (name == "btnSpecial")
-        {
-            if (specialPos == special.Length - 1) { specialPos = 0; }
-            else { specialPos++; }
-            specialButton.GetComponent<Image>().sprite = special[specialPos];
-        }
-        else if (name == "btnObjects")
+        if (name == "btnObjects")
         {
             if (objectsPos == objects.Length - 1) { objectsPos = 0; }
             else { objectsPos++; }
             objectsButton.GetComponent<Image>().sprite = objects[objectsPos];
+            objectsRight.sprite = icons[9];
         }
     }
 
@@ -245,29 +272,33 @@ public class LevelEditor : MonoBehaviour
 
         if (placeSprite.name.Contains("_v"))
             { newObject = Instantiate(objectsPrefab, placeOrigin + new Vector3(0, 0.5f, 0), Quaternion.identity); }
-        else
+        else 
             { newObject = Instantiate(objectsPrefab, placeOrigin, Quaternion.identity); }
 
         objectID++;
         newObject.name = objectID + "_" +  placeSprite.name;
         newObject.GetComponent<SpriteRenderer>().sprite = placeSprite;
-
-
-
-
     }
 
     // Add object name at chosen position to the level layout 2D array.
     public void AddObject(int posX, int posY, string name)
     {
         Debug.Log("AddObject: " + posX + "," + posY + ": " + name);
+        
         if (LevelData.openLevel.layout[posX, posY] == "empty")
         {
             if (name.Contains("detector")) { LevelData.openLevel.layout[posX - 2, posY - 1] = "x-ray"; }
+            else if(name.Contains("tile"))
+            {
+                LevelData.openLevel.layout[posX, posY] = "empty";
+                
+        
+            }
             LevelData.openLevel.layout[posX, posY] = name;
-
             Debug.Log(LevelData.openLevel.layout[posX, posY]);
         }
+
+        // What to do if it's not empty?!?!
     }
 
     public void SaveLayout()

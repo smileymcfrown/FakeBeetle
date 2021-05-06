@@ -96,25 +96,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beda02b90b94c1d4eb28cddcd5c9f3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  special:
-  - {fileID: 21300000, guid: 12053a6aedcf8914b87e281fd30135e3, type: 3}
-  - {fileID: 21300000, guid: 852a30662fef33e45be8cbf6e2ff49f7, type: 3}
-  - {fileID: 21300000, guid: 9e2ef85dd1a185c4a9ffe40fc6a84767, type: 3}
-  - {fileID: 21300000, guid: 2fb5cef41df593649925ef083374d47f, type: 3}
-  - {fileID: 21300000, guid: be12da0686f053c45a70833d6f020f72, type: 3}
-  - {fileID: 21300000, guid: 47c7644d8482f9f4ab5e5a7b6c4f9706, type: 3}
+  icons: []
   objects:
   - {fileID: 21300000, guid: 737cf60c1e712e54e802481aa4058dac, type: 3}
   - {fileID: 21300000, guid: 12053a6aedcf8914b87e281fd30135e3, type: 3}
   - {fileID: 21300000, guid: d52d10f2d5297264bb2a45959e2f5d02, type: 3}
   - {fileID: 21300000, guid: fe440daa4223ed0479cf47d2bec852c6, type: 3}
-  specialRenderer: {fileID: 0}
-  objectsRenderer: {fileID: 0}
-  specialPos: 0
-  objectsPos: 0
-  specialOrigin: {x: 0, y: 0, z: 0}
-  objectName: 
-  specialButton: {fileID: 0}
+  playerSprite: {fileID: 0}
+  gateSprite: {fileID: 0}
+  objectsButton: {fileID: 0}
+  inputName: {fileID: 0}
+  inputTurns: {fileID: 0}
+  startImage: {fileID: 0}
+  gateImage: {fileID: 0}
+  objectsLeft: {fileID: 0}
+  objectsRight: {fileID: 0}
+  objectsPrefab: {fileID: 0}
+  togglePrefab: {fileID: 0}
 --- !u!114 &1263602915826746132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,4 +127,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   movePoint: {x: 0, y: 0, z: 0}
-  selectSpecial: {fileID: 0}

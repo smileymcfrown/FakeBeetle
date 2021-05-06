@@ -9,7 +9,7 @@ public class PlaceObject : MonoBehaviour
 
     public float moveSpeed = 1.2f;
     public Vector3 movePoint;
-   
+    public Sprite whiteTile;
 
     int objectPosX = 6;
     int objectPosY = 4;
@@ -18,6 +18,7 @@ public class PlaceObject : MonoBehaviour
     bool placed;
     GameObject canvas;
     LevelEditor levelEditor;
+
 
     // Start is called before the first frame update
     void Start()
@@ -95,6 +96,13 @@ public class PlaceObject : MonoBehaviour
                 //string placeName = gameObject.name;
 
                 Debug.Log("Add: " + objectPosX + "," + objectPosY + ": " + gameObject.name);
+                if (gameObject.name.Contains("tile"))
+                {
+                    if (objectPosX % 4 == 0 || objectPosY % 4 == 0)
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().sprite = whiteTile;
+                    }
+                }
                 levelEditor.AddObject(objectPosX, objectPosY, gameObject.name);
                 placed = true;
                 GameObject.FindObjectOfType<CanvasGroup>().interactable = true;
