@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform movePoint;
     public Vector3 objectMovePoint = new Vector3(0,0,0);
     public string moveObject = "nope";
+    GameObject shuffle;
 
     int playerPosX;
     int playerPosY;
@@ -25,9 +26,17 @@ public class PlayerMovement : MonoBehaviour
         layout = LevelData.openLevel.layout;
 
         movePoint.parent = null;
-
-        playerPosX = 0;
-        playerPosY = 0;
+        if(layout[12, 0] == "player")
+        {
+            playerPosX = 12;
+            playerPosY = 0;
+        }
+        else
+        {
+            playerPosX = 0;
+            playerPosY = 0;
+        }
+        
     }
 
     // Update is called once per frame
@@ -74,13 +83,15 @@ public class PlayerMovement : MonoBehaviour
             if (moveObject != "nope")
             {
                 Debug.Log("INSIDE " + moveObject);
-                GameObject shuffle = GameObject.Find(moveObject);
                 objectMovePoint = shuffle.transform.position + (movePoint.position - transform.position);
             }
 
         }
-
-            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+        if (moveObject != "nope")
+        {
+            shuffle.transform.position = Vector3.MoveTowards(shuffle.transform.position, objectMovePoint, moveSpeed * Time.deltaTime);
+        }
 
             
         /*
@@ -123,12 +134,25 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Error in MovementCheck Switch");
                 return true;
         }
+        if(layout[12, 0] == "player")
+        {
+            if (newPosX < 0) { newPosX = 0; }
+            else if (newPosX >= layout.GetLength(0) - 1) { newPosX = layout.GetLength(0) - 1; }
 
-        if (newPosX < 0) { newPosX = 0; }
-        else if (newPosX >= layout.GetLength(0)-1) { newPosX = layout.GetLength(0)-1; }
+            if (newPosY < 0) { newPosY = 0; }
+            else if (newPosY >= layout.GetLength(1) - 1) { newPosY = layout.GetLength(1) - 1; }
+        }
+        else
+        {
+            if (newPosX < 0) { newPosX = 0; }
+            else if (newPosX >= layout.GetLength(0) - 1) { newPosX = layout.GetLength(0) - 1; }
+
+            if (newPosY < 0) { newPosY = 0; }
+            else if (newPosY >= layout.GetLength(1) - 1) { newPosY = layout.GetLength(1) - 1; }
+        }
+
+
         
-        if (newPosY < 0) { newPosY = 0; }
-        else if (newPosY >= layout.GetLength(1)-1) { newPosY = layout.GetLength(1)-1; }
        
         if (newPosX == playerPosX && newPosY == playerPosY) { return false; }
         
@@ -191,7 +215,10 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("CHECK " + moveObject);
             moveObject = layout[newPosX, newPosY];
 
-            
+            shuffle = GameObject.Find(moveObject);
+           
+
+
             return true;
         }
         else if (layout[newPosX, newPosY].Contains("snack"))
