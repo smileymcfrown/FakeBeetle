@@ -19,6 +19,26 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Options()
+    {
+        SceneManager.LoadScene("GraphicsSettings");
+    }
+
+    public void Back()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Level2()
+    {
+        SceneManager.LoadScene("Level2");
+    }    
+
+    public void Level3()
+    {
+        SceneManager.LoadScene("Level3");
+    }
         
 
 
