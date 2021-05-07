@@ -34,7 +34,7 @@ public class SettingsMenu : MonoBehaviour
     }
     public void NextLevel()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(nextScene);
     }
     public void Update()
     {
