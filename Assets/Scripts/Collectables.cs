@@ -5,11 +5,12 @@ using UnityEngine;
 public class Collectables : MonoBehaviour
 {
     [SerializeField] private TurnCounter turnsCounter;
-    [SerializeField] private bool hasSnacks = false;
-    [SerializeField] private int snackTurnAmount = 3;
+    [SerializeField] public bool hasSnacks = false;
+    [SerializeField] public int snackTurnAmount = 3;
 
-    [SerializeField] private bool hasMask = false;
+    [SerializeField] public bool hasMask = false;
     [SerializeField] private GameObject gate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,17 +29,15 @@ public class Collectables : MonoBehaviour
             gate.SetActive(false);  
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+   
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("SnackMachine"))
+        if (collision.collider.tag == "SnackMachine")
         {
-            Debug.Log("Got Snacks");
             SnackMachine();
         }
-        if (collision.gameObject.CompareTag("MaskStation"))
+        if (collision.collider.tag == "MaskStation")
         {
-            Debug.Log("Got Mask");
             MaskStation();
         }
 
@@ -47,6 +46,7 @@ public class Collectables : MonoBehaviour
     {
         if (hasSnacks == false)
         {
+            Debug.Log("Got Snacks");
             turnsCounter.turns += snackTurnAmount;
             hasSnacks = true;
         }
@@ -55,6 +55,7 @@ public class Collectables : MonoBehaviour
     {
         if (hasMask == false)
         {
+            Debug.Log("Got Mask");
             gate.SetActive(false);
             hasMask = true;
         }

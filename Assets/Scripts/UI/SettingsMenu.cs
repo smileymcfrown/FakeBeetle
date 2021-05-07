@@ -18,6 +18,8 @@ public class SettingsMenu : MonoBehaviour
     private GameObject optionsPanel;
     [SerializeField]
     private GameObject deathPanel;
+    [SerializeField] private string currentScene;
+    [SerializeField] private string nextScene;
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
@@ -27,6 +29,10 @@ public class SettingsMenu : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex);
     }
     public void Restart()
+    {
+        SceneManager.LoadScene(currentScene);
+    }
+    public void NextLevel()
     {
         SceneManager.LoadScene("SampleScene");
     }
