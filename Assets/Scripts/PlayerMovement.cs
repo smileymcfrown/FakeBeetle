@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
     int newPosX;
     int newPosY;
     string[,] layout;
-    bool endLevel = false;
 
     
     void Start()
@@ -61,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
                 if (canMove == true)
                 {
                     movePoint.position += new Vector3(moveX, 0f, 0f);
-                    Level.turnsRemaining--;
                     //playerPosX += (int)Input.GetAxisRaw("Horizontal");
                 }
             }
@@ -76,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
                 {
                     movePoint.position += new Vector3(0f, moveY, 0f);
                     gameObject.GetComponent<SpriteRenderer>().sortingOrder -= moveY*2;
-                    Level.turnsRemaining--;
                     //playerPosY += (int)Input.GetAxisRaw("Vertical");
                 }
 
@@ -137,33 +134,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Error in MovementCheck Switch");
                 return true;
         }
-        
-        if (layout[playerPosX, playerPosY] == "gate")
-        {
-            if (layout[12, 8] == "gate")
-            {
-                if (newPosX >= layout.GetLength(0) - 1)
-                { newPosX = layout.GetLength(0) - 1; }
-
-            }
-            else
-            {
-                if (newPosX < 0)
-                { newPosX = 0; }
-            }
-            if (direction == "V1")
-            {
-                if (Level.gotMask == true)
-                {
-                    Level.score += Level.turnsRemaining * 100;
-                    endLevel = true;
-                }
-                return false;
-            }
-        }
-    
-
-        else if (layout[12, 0] == "player")
+        if(layout[12, 0] == "player")
         {
             if (newPosX < 0) { newPosX = 0; }
             else if (newPosX >= layout.GetLength(0) - 1) { newPosX = layout.GetLength(0) - 1; }
@@ -181,7 +152,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-
+        
+       
         if (newPosX == playerPosX && newPosY == playerPosY) { return false; }
         
         if (newPosX > playerPosX)
@@ -251,8 +223,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (layout[newPosX, newPosY].Contains("snack"))
         {
-            Level.gotSnack = true;
-            Level.turnsRemaining += 5;
+            //Code for the Snack Machine
             return false;
         }
         else if (layout[newPosX, newPosY].Contains("detector"))
@@ -264,10 +235,15 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (layout[newPosX, newPosY].Contains("mask"))
         {
-            Level.gotMask = true;
+            //Code for getting a mask
             return false;
         }
-
+        else if (layout[newPosX, newPosY].Contains("gate"))
+        {
+            //Code for ending the level
+            playerPosX = newPosX; playerPosY = newPosY;
+            return true;
+        }
 
         
 

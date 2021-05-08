@@ -9,16 +9,10 @@ public class Level : MonoBehaviour
     public GameObject playerPrefab;
     public Sprite[] spriteList;
     public Sprite[] gateList;
-    public static int currentLevel = 0;
-    public static int score = 0;
-    public static int turnsRemaining;
-    public static bool gotMask = false;
-    public static bool gotSnack = false;
-
     Vector3 startPos;
     Vector3 currentPos;
     Sprite objectSprite;
-    
+    int currentLevel = 0;
     
     string[,] layout = new string[13, 9]    
     {
@@ -44,9 +38,7 @@ void Start()
     {
         startPos = new Vector3(-2.7f, -2.95f, 0f);
         LoadSave.Load();
-        LevelData.openLevel = LoadSave.savedLevels[currentLevel];
-        turnsRemaining = LevelData.openLevel.turns;
-
+        LevelData.openLevel = LoadSave.savedLevels[0];
 
 
         // Just code to show the objects in the array
