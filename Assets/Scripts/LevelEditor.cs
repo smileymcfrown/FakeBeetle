@@ -27,7 +27,7 @@ public class LevelEditor : MonoBehaviour
     string selectedMenu;  // To store the name of the currently selected menu item.
     GameObject lastSelected; // To return focus to menu if mouse is clicked elsewhere
 
-    //Save and Load Variables
+    // Save and Load Variables
     public InputField inputName, inputTurns;
     public Image startImage, gateImage, objectsLeft, objectsRight;
     
@@ -45,7 +45,7 @@ public class LevelEditor : MonoBehaviour
     bool gateRight = true; // For toggling two locations
     bool startLeft = true; //
 
-    bool placing = false;
+    // bool placing = false;
  
     void Start()
     {
