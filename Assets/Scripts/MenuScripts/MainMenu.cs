@@ -10,9 +10,9 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("StartButtonScene");
     }
 
-    public void LevelOne() // Loads level one when "LEVEL 1" is clicked
+    public void Level1() // Loads level one when "LEVEL 1" is clicked
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level1");
     }
 
     public void QuitButton()
