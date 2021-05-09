@@ -2074,8 +2074,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 86b2f96d6714cb34894c3750a34f3d01, type: 3}
   - {fileID: 21300000, guid: de95ba34ec9ec0e4d9c46fce7c427a6e, type: 3}
   playerSprite: {fileID: 21300000, guid: 793345babd7da1a49b4a285a63d13155, type: 3}
-  gateSprite: {fileID: -8642395471077912169, guid: a1a186b4b8344334eb43603a7f2a4d00, type: 3}
+  gateSprite: {fileID: 8386378455757745289, guid: cdda953dba60e40438315600523f46b0, type: 3}
   objectsButton: {fileID: 1459031974}
+  toggleStart: {fileID: 1883080678}
+  toggleGate: {fileID: 1257688703}
   inputName: {fileID: 1045866865}
   inputTurns: {fileID: 1545874811}
   startImage: {fileID: 1134425403}

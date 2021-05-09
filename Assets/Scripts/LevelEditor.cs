@@ -23,6 +23,8 @@ public class LevelEditor : MonoBehaviour
     public Sprite playerSprite;
     public Sprite gateSprite;
     public Button objectsButton;
+    public Toggle toggleStart;
+    public Toggle toggleGate;
     int objectsPos = 0; //Which object is currently displayed in the list
     string selectedMenu;  // To store the name of the currently selected menu item.
     GameObject lastSelected; // To return focus to menu if mouse is clicked elsewhere
@@ -49,23 +51,21 @@ public class LevelEditor : MonoBehaviour
  
     void Start()
     {
-        LevelData.openLevel = new LevelData();
-        placeOrigin = new Vector3(-2f, 0.3f, 0);
+        LevelData.openLevel = new LevelData(); // clear openLevel to start fresh
+        placeOrigin = new Vector3(-2f, 0.3f, 0); // Default coordinates to instantiate objects in centre of grid
 
-        for (int i = 0; i < LevelData.openLevel.layout.GetLength(0); i++)
+        for (int i = 0; i < LevelData.openLevel.layout.GetLength(0); i++) // Populate grid positions with default "empty"
         { for (int j = 0; j < LevelData.openLevel.layout.GetLength(1); j++) { LevelData.openLevel.layout[i, j] = "empty"; } }
 
-            //specialPrefab.SetActive(true);
-            //specialRenderer.sprite = special[specialPos];
-            //objectsRenderer.sprite = objects[objectsPos];
-
+        // Instantiate player object immediately at default position with highest sorting order
         Vector3 newPos = placeOrigin + new Vector3(-3, -2, 0);
         player = Instantiate(togglePrefab, newPos, Quaternion.identity);
         player.name = playerSprite.name;
         player.GetComponent<SpriteRenderer>().sprite = playerSprite;
         LevelData.openLevel.layout[0, 0] = player.name;
         player.GetComponent<SpriteRenderer>().sortingOrder = 11;
-
+        
+        // Instantiate gate object immediately at default position with lowest sorting order
         newPos = placeOrigin + new Vector3(3, 2.8f, 0);
         gate = Instantiate(togglePrefab, newPos, Quaternion.identity);
         gate.name = gateSprite.name;
@@ -75,8 +75,6 @@ public class LevelEditor : MonoBehaviour
 
         //Not sure why but object button displays wrong object on start
         // objectsButton.GetComponent<Image>().sprite = objects[objectsPos];
-
-
 
         // Code I used to check how vectors work - keep until player/object movement is fixed.
         Vector3 pos = new Vector3(3, 5, 5);
@@ -109,7 +107,7 @@ public class LevelEditor : MonoBehaviour
         else
         { */
         
-        
+        //Stop mouse clicks removing focus from the menu by always returning to last selected is nothing is selected.
         if (EventSystem.current.currentSelectedGameObject == null)
         {
             EventSystem.current.SetSelectedGameObject(lastSelected);
@@ -120,6 +118,10 @@ public class LevelEditor : MonoBehaviour
             lastSelected = EventSystem.current.currentSelectedGameObject;
             selectedMenu = EventSystem.current.currentSelectedGameObject.name;
          }
+
+        // Change highlighted menu items because toggles needed two different menu-item-selected sprites, one
+        // for each toggle state, and I could figure out how to do that. Instead, toggle label image is changed.
+        // Also, left and right arrow images need to change when btnObjects button is selected.
         if (selectedMenu == "btnObjects")
         {
             startImage.sprite = icons[0];
@@ -150,13 +152,15 @@ public class LevelEditor : MonoBehaviour
             objectsRight.sprite = icons[5];
         }
 
+        // Left right arrows to change object to select or to change toggle state.
+        // Maybe should change to use Input.GetAxisRaw the same as for player movement
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            SelectLeft(selectedMenu);
+            SelectLeftRight(selectedMenu, true);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            SelectRight(selectedMenu);
+            SelectLeftRight(selectedMenu, false);
         }
     }
 
@@ -173,7 +177,7 @@ public class LevelEditor : MonoBehaviour
 
             player.transform.position += new Vector3(6, 0, 0);
             player.GetComponent<SpriteRenderer>().flipX = !player.GetComponent<SpriteRenderer>().flipX;
-            LevelData.openLevel.layout[12, 0] = player.name;
+            LevelData.openLevel.layout[12, 0] = "player";
             LevelData.openLevel.layout[0, 0] = "empty";
             startLeft = false;
         }
@@ -187,7 +191,7 @@ public class LevelEditor : MonoBehaviour
             }
             player.transform.position += new Vector3(-6, 0, 0);
             player.GetComponent<SpriteRenderer>().flipX = !player.GetComponent<SpriteRenderer>().flipX;
-            LevelData.openLevel.layout[0, 0] = player.name;
+            LevelData.openLevel.layout[0, 0] = "player";
             LevelData.openLevel.layout[12, 0] = "empty";
             startLeft = true;
         }
@@ -204,7 +208,7 @@ public class LevelEditor : MonoBehaviour
             }
 
             gate.transform.position += new Vector3(-6, 0, 0);
-            LevelData.openLevel.layout[0, 8] = gate.name;
+            LevelData.openLevel.layout[0, 8] = "gate";
             LevelData.openLevel.layout[12, 8] = "empty";
             gateRight = false;
         }
@@ -216,7 +220,7 @@ public class LevelEditor : MonoBehaviour
                 Debug.Log("You have removed the thing that was where this is now.");
             }
             gate.transform.position += new Vector3(6, 0, 0);
-            LevelData.openLevel.layout[12, 8] = gate.name;
+            LevelData.openLevel.layout[12, 8] = "gate";
             LevelData.openLevel.layout[0, 8] = "empty";
             gateRight = true;
             
@@ -224,18 +228,39 @@ public class LevelEditor : MonoBehaviour
 
     }
 
-    public void SelectLeft(string name)
+    public void SelectLeftRight(string name, bool left)
     {
-        Debug.Log("Left: " + name);
+        Debug.Log(name + " - Left: " + left);
+
+        // Check menu item selected and either cycle object sprites or change toggle state
         if(name == "btnObjects")
         {
-            if (objectsPos == 0) { objectsPos = objects.Length - 1; }
-            else { objectsPos--; }
+            // Continuously cycle through object sprite array
+            if (objectsPos == 0 && left) 
+            { objectsPos = objects.Length - 1; }
+            else if (objectsPos == objects.Length - 1 && !left) 
+            { objectsPos = 0; }
+            else { if (left) { objectsPos--; } else { objectsPos++; } }
+
+            // Change to next sprite
             objectsButton.GetComponent<Image>().sprite = objects[objectsPos];
+
+            // Tried to make left/right arrows change sprite on keypress; however, it's so quick it's pointless.
             objectsLeft.sprite = icons[8];
+        }
+        else if(name == "toggleStart")
+        {
+            if (left) { toggleStart.isOn = true; }
+            else { toggleStart.isOn = false; }
+        }
+        else if (name == "toggleGate")
+        {
+            if (left) { toggleGate.isOn = false; }
+            else { toggleGate.isOn = true; }
         }
     }
 
+    /* Keeping old SelectRight function in case new combined SelectLeftRight function doesn't work.
     public void SelectRight(string name)
     {
         Debug.Log("Right: " + name);
@@ -246,7 +271,7 @@ public class LevelEditor : MonoBehaviour
             objectsButton.GetComponent<Image>().sprite = objects[objectsPos];
             objectsRight.sprite = icons[9];
         }
-    }
+    } */
 
     /* Keeping old code of PlaceSpecial just in case until testing complete. Code combined into PlaceObject below.
         public void PlaceSpecial()
@@ -301,11 +326,15 @@ public class LevelEditor : MonoBehaviour
         // What to do if it's not empty?!?!
     }
 
+    // Add turns and level name to openLevel then calls LoadSave.Save() to save to a file.
     public void SaveLayout()
     {
         // Make sure the is a name for this level.
         if (inputName.text != null || inputTurns.text != null)
         {
+            // Possibly add code to check if no objects have been placed with error message
+            // advising empty level cannot be saved.
+
             // ** Check to see if name is already used and give error if so.
             // or maybe just check if it's one of the 3 main levels and give an error otherwise overwrite.
             if(inputName.text.Contains("razil"))
@@ -314,6 +343,14 @@ public class LevelEditor : MonoBehaviour
             { LevelData.openLevel.background = "2nd_level_france"; }
             else if (inputName.text.Contains("gypt"))
             { LevelData.openLevel.background = "3rd_level_egypt"; }
+
+            /* Uncomment after including a list of gates to choose from when creating levels.
+             * Until then gate_straya is the default when LevelData.openLevel is created.
+             * Or add a sprite font to use on a blank, generic gate and dynamically change
+             * gate name to that of next level.
+             * 
+             * if (gate != "gate_straya") { LevelData.openLevel.gate = inputGate.text }
+             */
 
             LevelData.openLevel.levelName = inputName.text;
 

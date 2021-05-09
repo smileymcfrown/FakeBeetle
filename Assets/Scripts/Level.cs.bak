@@ -9,22 +9,15 @@ public class Level : MonoBehaviour
 
     public GameObject objectsPrefab;
     public GameObject playerPrefab;
-    public GameObject endPanel;
-    public GameObject deathPanel;
     public Sprite[] spriteList;
     public Sprite[] gateList;
     public Sprite[] backgroundList;
     public Text turnsText;
-    public Text scoreText;
-
     public static int currentLevel = 0;
     public static int score = 0;
     public static int turnsRemaining;
-    public static float startTime;
-    public static float timeTaken;
     public static bool gotMask = false;
     public static bool gotSnack = false;
-    public static bool paused = false;
 
     Vector3 startPos;
     Vector3 currentPos;
@@ -54,16 +47,8 @@ void Start()
     {
         startPos = new Vector3(-2.99f, -2.95f, 0f);
         LoadSave.Load();
-        LevelData.openLevel = LoadSave.savedLevels[currentLevel];
-        if (LevelData.openLevel.turns == 0) { turnsRemaining = 66; }
-        else { turnsRemaining = LevelData.openLevel.turns; }
+        LevelData.openLevel = LoadSave.savedLevels[0];
 
-        // Might not be needed if loading scene anew when starting next level.
-        turnsText.gameObject.SetActive(true);
-        scoreText.gameObject.SetActive(true);
-
-        turnsText.text = string.Format("Turns: {0}", turnsRemaining.ToString("D3"));
-        
 
         // Just code to show the objects in the array
         string levelArray = "Objects ";
@@ -98,7 +83,7 @@ void Start()
                         {
                             GameObject player = Instantiate(playerPrefab, currentPos, Quaternion.identity);
                             player.name = "player";
-                            player.GetComponent<SpriteRenderer>().sortingOrder = 119;
+                            player.GetComponent<SpriteRenderer>().sortingOrder = 11;
                         }
                         else if (LevelData.openLevel.layout[x, y].Contains("gate"))
                         {
@@ -146,7 +131,7 @@ void Start()
                             GameObject newObject = Instantiate(objectsPrefab, currentPos + new Vector3(0, 1, 0), Quaternion.identity);
                             newObject.name = loadSprite.name;
                             newObject.GetComponent<SpriteRenderer>().sprite = loadSprite;
-                            newObject.GetComponent<SpriteRenderer>().sortingOrder = 117 - ((y * 13) + x);
+                            newObject.GetComponent<SpriteRenderer>().sortingOrder = 10 - y;
                         }
                         else  // Instantiate all other level objects
                         {
@@ -176,8 +161,7 @@ void Start()
                                 newObject.name = LevelData.openLevel.layout[x, y].Substring(0, 3) + loadSprite.name;
                                 Debug.Log("Created: " + newObject.name);
                                 newObject.GetComponent<SpriteRenderer>().sprite = loadSprite;
-                                Debug.Log("Sort: " + x + "," + y + " : " + (118 - (y * 13 + x)));
-                                newObject.GetComponent<SpriteRenderer>().sortingOrder = 118 - (y * 13 + x);
+                                newObject.GetComponent<SpriteRenderer>().sortingOrder = 10 - y;
                             }
                         }
                     }
@@ -186,7 +170,7 @@ void Start()
         }
         else
         {
-            /*  Temporary Code for using massive array declared above if no saved level is found.
+            /*  Working Code for using massive array declared above if no saved level is found.
              *  Can be deleted when finished testing and level data is saved a file
              *  that won't be deleted for sure.
              */
@@ -214,43 +198,19 @@ void Start()
                 }
             }
         }
-        startTime = Time.time;
-    }
-
-    public void UpdateHUD() 
-    {
-        turnsText.text = string.Format("Turns: {0}", turnsRemaining.ToString("D2"));
-        scoreText.text = string.Format("{0}", score.ToString("D6"));
-    }
-
-    public void Death()
-    {
-        turnsText.gameObject.SetActive(false);
-        scoreText.gameObject.SetActive(false);
-        //Set score for testing purposes
-        score = 104853;
         
-        deathPanel.SetActive(true);
     }
 
     public void LevelComplete()
     {
-        //GameObject turns = GameObject.Find("TurnsResult");
-        //GameObject turnBonus = GameObject.Find("TurnsResult");
-        //GameObject timeBonus = GameObject.Find("TimeResult");
-        //GameObject total = GameObject.Find("TotalResult");
-        //float timeDelay = 2f;
-        turnsText.gameObject.SetActive(false);
-        scoreText.gameObject.SetActive(false);
-        paused = true;
-        Debug.Log("Scale: " + Time.timeScale);
-        endPanel.SetActive(true);
-        
+        // Some code to finish the level, update turns remaining, update points,
+        // and update currentLevel to go to the next level in whatever array someone makes
+        // Then load the level complete screen.
 
     }
     // Update is called once per frame
     void Update()
     {
-
+        turnsText.text = string.Format("Turns: {0}", turnsRemaining.ToString("D3"));
     }
 }

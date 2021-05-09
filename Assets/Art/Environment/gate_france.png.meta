@@ -1,28 +1,70 @@
 fileFormatVersion: 2
-guid: a1a186b4b8344334eb43603a7f2a4d00
+guid: 8881d5f6b5e0bbb409a6bbf436611d3d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8642395471077912169
-    second: airport_gate_to_france_0
+      213: -5596862370166349623
+    second: airport_gate_to_france (1)_0
   - first:
-      213: 3535832133296191063
-    second: airport_gate_to_france_1
+      213: 6185160294977655635
+    second: airport_gate_to_france (1)_1
   - first:
-      213: 3162583352131141517
-    second: airport_gate_to_france_2
+      213: 4864631980830934553
+    second: airport_gate_to_france (1)_2
   - first:
-      213: 8127424608712972978
-    second: airport_gate_to_france_3
+      213: 512120717607411046
+    second: airport_gate_to_france (1)_3
   - first:
-      213: 6689535751408245181
-    second: airport_gate_to_france_4
+      213: -6097016399112244983
+    second: airport_gate_to_france (1)_4
   - first:
-      213: 5959699021996763692
-    second: airport_gate_to_france_5
+      213: -3919658877616478670
+    second: airport_gate_to_france (1)_5
   - first:
-      213: 8595033416411162454
-    second: airport_gate_to_france_6
+      213: -1254704675879074755
+    second: airport_gate_to_france (1)_6
+  - first:
+      213: -5981997726063749043
+    second: gate_france (1)_0
+  - first:
+      213: -8833761907626095397
+    second: gate_france (1)_1
+  - first:
+      213: 944941548267669929
+    second: gate_france (1)_2
+  - first:
+      213: 2454377714296820553
+    second: gate_france (1)_3
+  - first:
+      213: -6741578221189099981
+    second: gate_france (1)_4
+  - first:
+      213: -7423335144385810386
+    second: gate_france (1)_5
+  - first:
+      213: -1856784747343876074
+    second: gate_france (1)_6
+  - first:
+      213: 2131492789717905426
+    second: gate_france_0
+  - first:
+      213: -7399056253648817267
+    second: gate_france_1
+  - first:
+      213: 8954611704657344181
+    second: gate_france_2
+  - first:
+      213: -4350210940643501378
+    second: gate_france_3
+  - first:
+      213: -7322283186737941152
+    second: gate_france_4
+  - first:
+      213: -9183120585381365382
+    second: gate_france_5
+  - first:
+      213: 628546395644883400
+    second: gate_france_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,7 +131,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -101,7 +143,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,7 +155,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -125,7 +167,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -137,7 +179,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -148,7 +190,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: airport_gate_to_france_0
+      name: gate_france_0
       rect:
         serializedVersion: 2
         x: 0
@@ -162,14 +204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 791d4f1cb1b001880800000000000000
-      internalID: -8642395471077912169
+      spriteID: 210317c2665949d10800000000000000
+      internalID: 2131492789717905426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_france_1
+      name: gate_france_1
       rect:
         serializedVersion: 2
         x: 64
@@ -183,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 756f782779cc11130800000000000000
-      internalID: 3535832133296191063
+      spriteID: d8331280a85415990800000000000000
+      internalID: -7399056253648817267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_france_2
+      name: gate_france_2
       rect:
         serializedVersion: 2
         x: 128
@@ -204,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8f375c7dc0c3eb20800000000000000
-      internalID: 3162583352131141517
+      spriteID: 5b6f7add6eb254c70800000000000000
+      internalID: 8954611704657344181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_france_3
+      name: gate_france_3
       rect:
         serializedVersion: 2
         x: 0
@@ -225,14 +267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bada15ee996ac070800000000000000
-      internalID: 8127424608712972978
+      spriteID: eba1de8a232f0a3c0800000000000000
+      internalID: -4350210940643501378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_france_4
+      name: gate_france_4
       rect:
         serializedVersion: 2
         x: 64
@@ -246,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db9d6feb25106dc50800000000000000
-      internalID: 6689535751408245181
+      spriteID: 0657bad9c36026a90800000000000000
+      internalID: -7322283186737941152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_france_5
+      name: gate_france_5
       rect:
         serializedVersion: 2
         x: 128
@@ -267,14 +309,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2a2c564faa15b250800000000000000
-      internalID: 5959699021996763692
+      spriteID: a7934ca5b700f8080800000000000000
+      internalID: -9183120585381365382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_france_6
+      name: gate_france_6
       rect:
         serializedVersion: 2
         x: 0
@@ -288,8 +330,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 657acc19a51b74770800000000000000
-      internalID: 8595033416411162454
+      spriteID: 8c1f34ddd9b09b800800000000000000
+      internalID: 628546395644883400
       vertices: []
       indices: 
       edges: []

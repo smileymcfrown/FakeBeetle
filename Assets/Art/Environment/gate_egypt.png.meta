@@ -1,28 +1,49 @@
 fileFormatVersion: 2
-guid: ac4565de14c700f44a303652473afd39
+guid: 3c6d3b52da25f2c48b4405937c6b55e0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7552312040477178771
-    second: airport_gate_to_australia_0
+      213: -7853910701610269594
+    second: airport_gate_to_egypt_0
   - first:
-      213: 7246362327961868744
-    second: airport_gate_to_australia_1
+      213: -1087003686789449805
+    second: airport_gate_to_egypt_1
   - first:
-      213: 1232926537515525
-    second: airport_gate_to_australia_2
+      213: -1247374881184537550
+    second: airport_gate_to_egypt_2
   - first:
-      213: -7569101838233334469
-    second: airport_gate_to_australia_3
+      213: 3568737850880228402
+    second: airport_gate_to_egypt_3
   - first:
-      213: -5197443463687369632
-    second: airport_gate_to_australia_4
+      213: -7514836920616419883
+    second: airport_gate_to_egypt_4
   - first:
-      213: -4495184116338702498
-    second: airport_gate_to_australia_5
+      213: 2416420493768917011
+    second: airport_gate_to_egypt_5
   - first:
-      213: 6887969030028605408
-    second: airport_gate_to_australia_6
+      213: 3660696965987812564
+    second: airport_gate_to_egypt_6
+  - first:
+      213: -8810027348448244951
+    second: gate_egypt_0
+  - first:
+      213: -5233028210539355728
+    second: gate_egypt_1
+  - first:
+      213: -7691264817135393006
+    second: gate_egypt_2
+  - first:
+      213: -6607676437057186644
+    second: gate_egypt_3
+  - first:
+      213: -4913331297296737679
+    second: gate_egypt_4
+  - first:
+      213: -5922500384282565166
+    second: gate_egypt_5
+  - first:
+      213: -4131903032760551317
+    second: gate_egypt_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -148,7 +169,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: airport_gate_to_australia_0
+      name: gate_egypt_0
       rect:
         serializedVersion: 2
         x: 0
@@ -162,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39b3c8579c33fc860800000000000000
-      internalID: 7552312040477178771
+      spriteID: 92b044addce7cb580800000000000000
+      internalID: -8810027348448244951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_australia_1
+      name: gate_egypt_1
       rect:
         serializedVersion: 2
         x: 64
@@ -183,14 +204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c990f7f420409460800000000000000
-      internalID: 7246362327961868744
+      spriteID: 0b1243b719c8067b0800000000000000
+      internalID: -5233028210539355728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_australia_2
+      name: gate_egypt_2
       rect:
         serializedVersion: 2
         x: 128
@@ -204,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5028d441751640000800000000000000
-      internalID: 1232926537515525
+      spriteID: 2176f2d1663234590800000000000000
+      internalID: -7691264817135393006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_australia_3
+      name: gate_egypt_3
       rect:
         serializedVersion: 2
         x: 0
@@ -225,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3d885f1bf525f690800000000000000
-      internalID: -7569101838233334469
+      spriteID: ca4dc7a1a41dc44a0800000000000000
+      internalID: -6607676437057186644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_australia_4
+      name: gate_egypt_4
       rect:
         serializedVersion: 2
         x: 64
@@ -246,14 +267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06c0dbef4b8fed7b0800000000000000
-      internalID: -5197443463687369632
+      spriteID: 17a91d0973750dbb0800000000000000
+      internalID: -4913331297296737679
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_australia_5
+      name: gate_egypt_5
       rect:
         serializedVersion: 2
         x: 128
@@ -267,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5747a9dcd5ed91c0800000000000000
-      internalID: -4495184116338702498
+      spriteID: 2d529bc774d0fcda0800000000000000
+      internalID: -5922500384282565166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: airport_gate_to_australia_6
+      name: gate_egypt_6
       rect:
         serializedVersion: 2
         x: 0
@@ -288,8 +309,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e73fbab65bf69f50800000000000000
-      internalID: 6887969030028605408
+      spriteID: b68b2fd551888a6c0800000000000000
+      internalID: -4131903032760551317
       vertices: []
       indices: 
       edges: []

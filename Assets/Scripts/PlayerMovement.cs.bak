@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform movePoint;
     public Vector3 objectMovePoint;
     public string moveObject = "nope";
-    GameObject shuffle;  //Object the player is moving
+    GameObject shuffle;
     Level level;
 
     int playerPosX;
@@ -17,13 +17,12 @@ public class PlayerMovement : MonoBehaviour
     int newPosX;
     int newPosY;
     string[,] layout;
-    bool endLevel = false;
 
     void Start()
     {
         // Load the variable layout with the current map.
         // layout will be used to adjust the map and keep track of the objects.
-        level = FindObjectOfType<Level>();
+
         layout = LevelData.openLevel.layout;
 
         movePoint.parent = null;
@@ -37,100 +36,72 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!Level.paused)
+
+        // On axis movement, MovementCheck() is called to check for any obstacles it currently returns a bool
+        // maybe it should return a string advising not only whether to move but also if another object needs to move.
+
+        if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
         {
-
-            // On axis movement, MovementCheck() is called to check for any obstacles it currently returns a bool
-            // maybe it should return a string advising not only whether to move but also if another object needs to move.
-
-            if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
+                 
+            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
-                Debug.Log("1");
-                if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+                int moveX = (int)Input.GetAxisRaw("Horizontal");
+
+                bool canMove = MovementCheck("H" + moveX);
+                Debug.Log("canMove " + canMove);
+
+                if (canMove == true)
                 {
-                    int moveX = (int)Input.GetAxisRaw("Horizontal");
-                    Debug.Log("2");
+                    movePoint.position += new Vector3(moveX, 0f, 0f);
+                    Debug.Log("Changing Here");
+                    Level.turnsRemaining--;
 
-                    bool canMove = MovementCheck("H" + moveX);
-                    Debug.Log("HcanMove " + canMove);
+                    //Both of these have issues - says no Object Reference, but it's there... fucking unity.
+                    //level.turnsText.text = string.Format("Turns: {0}", Level.turnsRemaining.ToString("D3"));
+                    //level.Turns(); 
 
-                    if (canMove == true)
-                    {
-                        movePoint.position += new Vector3(moveX, 0f, 0f);
-                        if (moveObject != "nope")
-                        { Debug.Log("INSIDE " + moveObject); shuffle.GetComponent<SpriteRenderer>().sortingOrder -= moveX; }
-                        Level.turnsRemaining--;
-                        level.UpdateHUD();
-
-                        //Both of these have issues - says no Object Reference, but it's there... fucking unity.
-                        //level.turnsText.text = string.Format("Turns: {0}", Level.turnsRemaining.ToString("D3"));
-                        //level.Turns(); 
-
-                        //playerPosX += (int)Input.GetAxisRaw("Horizontal");
-                    }
-                }
-                else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
-                {
-                    int moveY = (int)Input.GetAxisRaw("Vertical");
-                    Debug.Log("3");
-                    bool canMove = MovementCheck("V" + moveY);
-                    Debug.Log("VcanMove " + canMove);
-
-                    if (canMove == true)
-                    {
-                        movePoint.position += new Vector3(0f, moveY, 0f);
-                        gameObject.GetComponent<SpriteRenderer>().sortingOrder -= moveY * 26;
-                        if (moveObject != "nope")
-                        { Debug.Log("INSIDE " + moveObject); shuffle.GetComponent<SpriteRenderer>().sortingOrder -= moveY * 26; }
-                        Level.turnsRemaining--;
-                        level.UpdateHUD();
-                        Debug.Log("3.1");
-                        //playerPosY += (int)Input.GetAxisRaw("Vertical");
-                    }
-
-
-                }
-                //Debug.Log("moveObject: " + moveObject);
-
-            }
-        
-
-            if (endLevel && Vector3.Distance(transform.position, movePoint.position) <= .2f)
-            {
-                Debug.Log("LevelShouldComplete");
-                gameObject.GetComponent<SpriteRenderer>().sortingOrder = -2;
-
-                if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
-                { 
-                    Level.paused = true; 
-                    Level.timeTaken = Time.time - Level.startTime;
-                    Debug.Log("LevelComplete " + "Time: " + Level.timeTaken + " Paused: " + Level.paused);
-                    level.LevelComplete(); 
+                    //playerPosX += (int)Input.GetAxisRaw("Horizontal");
                 }
             }
-            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-        
+            else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+            {
+                int moveY = (int)Input.GetAxisRaw("Vertical");
+
+                bool canMove = MovementCheck("V" + moveY);
+                Debug.Log("canMove " + canMove);
+
+                if (canMove == true)
+                {
+                    movePoint.position += new Vector3(0f, moveY, 0f);
+                    gameObject.GetComponent<SpriteRenderer>().sortingOrder -= moveY*2;
+                    Level.turnsRemaining--;
+                    //playerPosY += (int)Input.GetAxisRaw("Vertical");
+                }
+
+
+            }
+            Debug.Log("moveObject: " + moveObject);
             if (moveObject != "nope")
             {
+                Debug.Log("INSIDE " + moveObject);
                 objectMovePoint = shuffle.transform.position + (movePoint.position - transform.position);
-                shuffle.transform.position = Vector3.MoveTowards(shuffle.transform.position, objectMovePoint, moveSpeed * Time.deltaTime);
-            }
-
-            if(Level.turnsRemaining == 0)
-            {
-                Level.paused = true;
-                level.Death();
             }
 
         }
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+        if (moveObject != "nope")
+        {
+            shuffle.transform.position = Vector3.MoveTowards(shuffle.transform.position, objectMovePoint, moveSpeed * Time.deltaTime);
+        }
 
+            
         //if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
 
     }
     bool MovementCheck(string direction)
     {
-        //Debug.Log(direction);
-        //Debug.Log("Player: " + playerPosX + "," + playerPosY + " New: " + newPosX + "," + newPosY);
+        Debug.Log(direction);
+        Debug.Log("Player: " + playerPosX + "," + playerPosY + " New: " + newPosX + "," + newPosY);
 
         moveObject = "nope";
 
@@ -177,24 +148,17 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Error in MovementCheck Switch");
                 return true;
         }
-        
-        // ***************** Boarding Gate - Level End *****************
 
-        if( layout[playerPosX, playerPosY].Contains("mask") && direction == "V1") { return false; }
-        else if (layout[playerPosX, playerPosY].Contains("gate"))
+        if (layout[playerPosX, playerPosY].Contains("gate"))
         {
-            if (layout[12, 8].Contains("gate"))
+            if (layout[12, 8] == "gate")
             {
-                Debug.Log("4");
-
-                if (newPosX > layout.GetLength(0) - 1)
+                if (newPosX >= layout.GetLength(0) - 1)
                 { newPosX = layout.GetLength(0) - 1; }
-                
+
             }
             else
             {
-                Debug.Log("5");
-
                 if (newPosX < 0)
                 { newPosX = 0; }
             }
@@ -202,20 +166,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (Level.gotMask == true)
                 {
-                    Debug.Log("6");
-
-                    movePoint.position += new Vector3(0f, 1, 0f);
-                    transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-                    Level.turnsRemaining--;
-                    level.UpdateHUD();
-                    endLevel = true;
+                    Level.score += Level.turnsRemaining * 100;
+                    //endLevel = true;
                 }
-                Debug.Log("7");
                 return false;
             }
         }
-
-        // ***************** Keep player inside game area *****************
 
         else if (layout[12, 0] == "player")
         {
@@ -234,19 +190,32 @@ public class PlayerMovement : MonoBehaviour
             else if (newPosY >= layout.GetLength(1) - 1) { newPosY = layout.GetLength(1) - 1; }
         }
 
+
+       
         if (newPosX == playerPosX && newPosY == playerPosY) { return false; }
-
-        // ***************** Check for barrier objects *****************
-
+        
         if (newPosX > playerPosX)
         {
             Debug.Log((newPosX - 1) + "," + newPosY + "," + layout[newPosX - 1, newPosY]);
             if (layout[newPosX - 1, newPosY].Contains("barrier")) { return false; }
+            if (layout[newPosX - 1, newPosY].Contains("detector"))
+            {
+                //Code to handle walking through the metal detector
+                //Make this a function to call instead or put code outside of
+                //these conditionals to save repeating it.
+            }
+
         }
         else if (newPosX < playerPosX)
         {
             Debug.Log((newPosX + 1) + "," + newPosY + "," + layout[newPosX + 1, newPosY]);
             if (layout[newPosX + 1, newPosY].Contains("barrier")) { return false; }
+            if (layout[newPosX + 1, newPosY].Contains("detector"))
+            {
+                //Code to handle walking through the metal detector
+                //Make this a function to call instead or put code outside of
+                //these conditionals to save repeating it.
+            }
         }
         else if (newPosY > playerPosY)
         {
@@ -254,19 +223,29 @@ public class PlayerMovement : MonoBehaviour
             if (layout[newPosX, newPosY - 1].Contains("barrier")) { return false; }
             if (layout[newPosX, newPosY - 1].Contains("detector"))
             {
-                Debug.Log("You're going through the detector!");
+                //Code to handle walking through the metal detector
+                //Make this a function to call instead or put code outside of
+                //these conditionals to save repeating it.
             }
         }
         else if (newPosY < playerPosY)
         {
             Debug.Log(newPosX + "," + (newPosY + 1) + "," + layout[newPosX, newPosY + 1]);
             if (layout[newPosX, newPosY + 1].Contains("barrier")) { return false; }
-            if (layout[newPosX, newPosY + 1].Contains("detector")) { return false; }
+            if (layout[newPosX, newPosY + 1].Contains("detector"))
+            {
+                //Code to handle walking through the metal detector
+                //Make this a function to call instead or put code outside of
+                //these conditionals to save repeating it.
+            }
         }
 
-        // ***************** Check for, and move, luggage *****************
+        Debug.Log("HEY!  "+layout[newPosX, newPosY]);
 
-        if (layout[newPosX, newPosY].Contains("luggage"))
+        
+        if (layout[newPosX, newPosY].Contains("rubbish")) { return false; }
+        else if (layout[newPosX, newPosY].Contains("plant")) { return false; }
+        else if (layout[newPosX, newPosY].Contains("luggage"))
         {
             //Code to move luggage object forward or possibly set a Bool
             //that triggers code inside player movement to move luggage object
@@ -274,38 +253,25 @@ public class PlayerMovement : MonoBehaviour
             if (secondObjectX < 0 || secondObjectX >= layout.GetLength(0) ||
                 secondObjectY < 0 || secondObjectY >= layout.GetLength(1) || 
                 layout[barrierX, barrierY] != "empty" || layout[secondObjectX, secondObjectY] != "empty")
-                // || !layout[secondObjectX, secondObjectY].Contains("mask") )
             {
                 return false;
             }
             else
             {
-                //if(layout[secondObjectX, secondObjectY].Contains("mask"))
-                //{
-                    //Put some code here to keep mask in position while luggage occupies the same space
-                    //Possibly give Mask a position marker at start using y * (13 + x) to convert position
-                    //instead of relying on layout[] which will be changed when luggage takes mask's tile
-               // }
-                //Debug.Log("CHECK " + moveObject);
+                Debug.Log("CHECK " + moveObject);
                 moveObject = layout[newPosX, newPosY];
+                layout[newPosX, newPosY] = "empty";
                 layout[secondObjectX, secondObjectY] = moveObject;
                 shuffle = GameObject.Find(moveObject);
-
-                layout[playerPosX, playerPosY] = "empty";
-                playerPosX = newPosX; playerPosY = newPosY;
+                
+				playerPosX = newPosX; playerPosY = newPosY;
                 return true;
             }
         }
-
-        // ***************** Check for other objects *****************
-
         else if (layout[newPosX, newPosY].Contains("snack"))
         {
-            if (!Level.gotSnack)
-            {
-                Level.gotSnack = true;
-                Level.turnsRemaining += 5;
-            }
+            Level.gotSnack = true;
+            Level.turnsRemaining += 5;
             return false;
         }
         else if (layout[newPosX, newPosY].Contains("detector"))
@@ -314,14 +280,12 @@ public class PlayerMovement : MonoBehaviour
             // before walking through metal detector (see other "detector" code above)
             // If coming from above: return false
             //    return false;
-            Debug.Log("Detector Pockets!");
-            layout[playerPosX, playerPosY] = "empty";
-            playerPosX = newPosX; playerPosY = newPosY;
+            
+			playerPosX = newPosX; playerPosY = newPosY;
             return true;
         }
         else if (layout[newPosX, newPosY].Contains("x-ray"))
         {
-            Debug.Log("X-Ray Pockets!");
             // Code for emptying pockets into X-Ray machine
             // before walking through metal detector (see other "detector" code above)
             // if !coming from right: return false
@@ -329,18 +293,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (layout[newPosX, newPosY].Contains("mask"))
         {
-            if(direction == "V-1") { return false; }
-
             Level.gotMask = true;
-
-            layout[playerPosX, playerPosY] = "empty";
+            
             playerPosX = newPosX; playerPosY = newPosY;
             return true;
         }
-        else if (layout[newPosX, newPosY].Contains("rubbish")) { return false; }
-        else if (layout[newPosX, newPosY].Contains("plant")) { return false; }
-
-
+        
         /* The code below is for ending the level when the player reaches the *last square*.
          * 
          * Currently the 'gate' code is on line 156 which means the player must reach the last square
@@ -354,10 +312,9 @@ public class PlayerMovement : MonoBehaviour
             return true;
         }
         */
+        
 
-
-        else {
-        layout[playerPosX, playerPosY] = "empty";
+        else { 
         playerPosX = newPosX; playerPosY = newPosY;
         return true;
        }
