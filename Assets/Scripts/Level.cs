@@ -9,22 +9,23 @@ public class Level : MonoBehaviour
 
     public GameObject objectsPrefab;
     public GameObject playerPrefab;
+    public GameObject detectorPrefab;
     public GameObject endPanel;
     public GameObject deathPanel;
+    //public GameObject gameCompletePanel;
     public Sprite[] spriteList;
     public Sprite[] gateList;
     public Sprite[] backgroundList;
     public Text turnsText;
     public Text scoreText;
-
     public static int currentLevel = 0;
     public static int score = 0;
-    public static int turnsRemaining;
-    public static float startTime;
-    public static float timeTaken;
-    public static bool gotMask = false;
-    public static bool gotSnack = false;
     public static bool paused = false;
+    public static int turnsRemaining;
+    public static float gameStartTime;
+    public static float levelStartTime;
+    public static float timeTaken;
+    public static float totalTime;
 
     Vector3 startPos;
     Vector3 currentPos;
@@ -52,17 +53,62 @@ public class Level : MonoBehaviour
  
 void Start()
     {
-        startPos = new Vector3(-2.99f, -2.95f, 0f);
+        //PlayerData.player = new PlayerData();
+        //PlayerData.player.score = 0;
+
+        paused = false;
         LoadSave.Load();
-        LevelData.openLevel = LoadSave.savedLevels[currentLevel];
+        startPos = new Vector3(-2.99f, -2.95f, 0f);
+
+        //if(PlayerData.player.score == 0)
+        //{
+        //    PlayerData.player.currentLevel = 0;
+        //}
+        //else
+        //{
+        //    PlayerData.player.currentLevel = 1;
+        //}
+        bool foundLevel = false;
+        Debug.Log("Saved Levels: " + LoadSave.savedLevels.Count);
+        foreach (LevelData level in LoadSave.savedLevels)
+        {
+            if (currentLevel == 0 && level.levelName.Contains("razil"))
+            {
+                Debug.Log("Level: Brazil");
+                LevelData.openLevel = level;
+                foundLevel = true;
+                break;
+            }
+            else if (currentLevel == 1 && level.levelName.Contains("rance"))
+            {
+                Debug.Log("Level: France");
+                LevelData.openLevel = level;
+                foundLevel = true;
+                break;
+            }
+            else if (currentLevel == 2 && level.levelName.Contains("gypt"))
+            {
+                Debug.Log("Level: Egypt");
+                LevelData.openLevel = level;
+                foundLevel = true;
+                break;
+            }
+        }
+        if (!foundLevel)
+        {
+            Debug.Log("FAIL - Default Level Loaded!");
+            LevelData.openLevel = LoadSave.savedLevels[0];//PlayerData.player.currentLevel];
+        }
+
+
         if (LevelData.openLevel.turns == 0) { turnsRemaining = 66; }
         else { turnsRemaining = LevelData.openLevel.turns; }
 
         // Might not be needed if loading scene anew when starting next level.
         turnsText.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
+        UpdateHUD();
 
-        turnsText.text = string.Format("Turns: {0}", turnsRemaining.ToString("D3"));
         
 
         // Just code to show the objects in the array
@@ -76,9 +122,7 @@ void Start()
         }
         Debug.Log(levelArray);
 
-        /*
-         * Need to put code for switching the background/environment image here.
-         */
+        GameObject.Find("Level").GetComponent<SpriteRenderer>().sprite = backgroundList[currentLevel];
 
 
         if (LevelData.openLevel.levelName != "")
@@ -98,22 +142,26 @@ void Start()
                         {
                             GameObject player = Instantiate(playerPrefab, currentPos, Quaternion.identity);
                             player.name = "player";
-                            player.GetComponent<SpriteRenderer>().sortingOrder = 119;
+                            if (x == 12)
+                            {
+                                player.GetComponent<SpriteRenderer>().sortingOrder = 107;
+                                player.GetComponent<SpriteRenderer>().flipX = true;
+                            }
+                            else 
+                            {
+                                player.GetComponent<SpriteRenderer>().sortingOrder = 119;
+                            }
+                        }
+                        
+                        if (LevelData.openLevel.layout[x, y].Contains("detector"))
+                        {
+                            GameObject detector = Instantiate(detectorPrefab, currentPos + new Vector3(0,0.5f,0), Quaternion.identity);
+                            detector.name = "detector_v";
+                            detector.GetComponent<SpriteRenderer>().sortingOrder = 117 - ((y * 13) + x);
                         }
                         else if (LevelData.openLevel.layout[x, y].Contains("gate"))
                         {
                             Debug.Log("Found Gate");
-                            /* This was for getting the gate sprite from the sprite list, but now there are 3 gates
-                            for (int i = 0; i < spriteList.Length; ++i)
-                            {
-                                if (spriteList[i].name.Contains("gate"))
-                                {
-                                    objectSprite = spriteList[i];
-                                    Debug.Log(objectSprite.name);
-                                }
-                            } 
-                            */
-
                             /* Adding one of three gate sprites
                              * Poor coding.. hacked to make levels work forcing array positions
                              * Better to create new levels that use LevelData.openLevel.gate to find correct gate
@@ -123,11 +171,11 @@ void Start()
                             {
                                 Debug.Log("Gate Straya");
                                 if (LevelData.openLevel.levelName.Contains("razil"))
-                                {  loadSprite = gateList[0]; Debug.Log("Brazil Sprite" + loadSprite.name); }
+                                {  loadSprite = gateList[0]; Debug.Log("Brazil Sprite " + loadSprite.name); }
                                 else if (LevelData.openLevel.levelName.Contains("rance"))
-                                { loadSprite = gateList[1]; Debug.Log("France Sprite" + loadSprite.name); }
+                                { loadSprite = gateList[1]; Debug.Log("France Sprite " + loadSprite.name); }
                                 else if (LevelData.openLevel.levelName.Contains("gypt"))
-                                { loadSprite = gateList[2]; Debug.Log("Australia Sprite" + loadSprite.name); }
+                                { loadSprite = gateList[2]; Debug.Log("Australia Sprite " + loadSprite.name); }
                             }
                             else
                             {
@@ -173,11 +221,14 @@ void Start()
                                     newObject = Instantiate(objectsPrefab, currentPos, Quaternion.identity);
 
                                 }
-                                newObject.name = LevelData.openLevel.layout[x, y].Substring(0, 3) + loadSprite.name;
-                                Debug.Log("Created: " + newObject.name);
-                                newObject.GetComponent<SpriteRenderer>().sprite = loadSprite;
-                                Debug.Log("Sort: " + x + "," + y + " : " + (118 - (y * 13 + x)));
-                                newObject.GetComponent<SpriteRenderer>().sortingOrder = 118 - (y * 13 + x);
+                                if (!loadSprite.name.Contains("detector"))
+                                {
+                                    newObject.name = LevelData.openLevel.layout[x, y].Substring(0, 3) + loadSprite.name;
+                                    Debug.Log("Created: " + newObject.name);
+                                    newObject.GetComponent<SpriteRenderer>().sprite = loadSprite;
+                                    Debug.Log("Sort: " + x + "," + y + " : " + (118 - (y * 13 + x)));
+                                    newObject.GetComponent<SpriteRenderer>().sortingOrder = 118 - (y * 13 + x);
+                                }
                             }
                         }
                     }
@@ -214,13 +265,15 @@ void Start()
                 }
             }
         }
-        startTime = Time.time;
+
+        if (currentLevel == 0) { gameStartTime = Time.time; levelStartTime = Time.time; }
+        else { levelStartTime = Time.time; }
     }
 
     public void UpdateHUD() 
     {
         turnsText.text = string.Format("Turns: {0}", turnsRemaining.ToString("D2"));
-        scoreText.text = string.Format("{0}", score.ToString("D6"));
+        scoreText.text = string.Format("{0}", score.ToString("D6")); //PlayerData.player.score.ToString("D6"));
     }
 
     public void Death()
@@ -228,25 +281,34 @@ void Start()
         turnsText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
         //Set score for testing purposes
-        score = 104853;
+        //PlayerData.player.
+            score = 104853;
         
         deathPanel.SetActive(true);
     }
 
     public void LevelComplete()
     {
-        //GameObject turns = GameObject.Find("TurnsResult");
-        //GameObject turnBonus = GameObject.Find("TurnsResult");
-        //GameObject timeBonus = GameObject.Find("TimeResult");
-        //GameObject total = GameObject.Find("TotalResult");
-        //float timeDelay = 2f;
         turnsText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
         paused = true;
-        Debug.Log("Scale: " + Time.timeScale);
-        endPanel.SetActive(true);
-        
+        // Time.timeScale = 0;
 
+        {
+            endPanel.SetActive(true);
+        }
+
+
+    }
+    public void GameComplete()
+    {
+        //if (//PlayerData.player.
+        //currentLevel == 2)
+        //{
+        endPanel.SetActive(false);
+       // gameCompletePanel.SetActive(true);
+        //}
+        //else
     }
     // Update is called once per frame
     void Update()

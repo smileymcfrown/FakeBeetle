@@ -11,7 +11,7 @@ public static class LoadSave
     public static void Save()
     {
         if (LevelData.openLevel.levelName.Contains("razil"))
-            if(savedLevels.Count < 0)
+            if(savedLevels.Count == 0)
             { savedLevels.Add(LevelData.openLevel); }
         else
         { savedLevels.Insert(0,LevelData.openLevel); }

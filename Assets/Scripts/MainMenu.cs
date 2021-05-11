@@ -5,17 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void StartGame() // Loads The Level selector once the "Start" Button is clicked.
+
+    void Start()
     {
-        SceneManager.LoadScene("StartButtonScene");
+        LoadSave.Load();
+        //PlayerData.player = new PlayerData();
+
+
     }
 
-    public void LevelOne() // Loads level one when "LEVEL 1" is clicked
+
+
+    public void StartGame() // Loads The Level selector once the "Start" Button is clicked.
     {
         SceneManager.LoadScene("Level");
     }
 
-    public void QuitButton()
+    public void LevelEditor() // Loads level one when "LEVEL 1" is clicked
+    {
+        SceneManager.LoadScene("LevelEditor");
+    }
+
+    public void QuitGame()
     {
         Application.Quit();
     }

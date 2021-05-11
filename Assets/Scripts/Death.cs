@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
@@ -17,6 +18,30 @@ public class Death : MonoBehaviour
     {
         StartCoroutine(SlowMenu());
     }
+    public void Leave(bool restart)
+    {
+        Debug.Log("Inside StartAgain");
+
+        Level.currentLevel = 0;
+        Level.score = 0;
+        LevelData.openLevel = LoadSave.savedLevels[0];
+        PlayerMovement.tempLayout = LevelData.openLevel.layout;
+        if (restart) { SceneManager.LoadScene("Level"); }
+        else { SceneManager.LoadScene("MainMenu"); }
+    }
+
+    /* 
+     * Combined into Leave(bool)
+     *
+    public void MainMenu()
+    {
+        Debug.Log("Inside Quit");
+
+        Level.currentLevel = 0;
+        Level.score = 0;
+        SceneManager.LoadScene("MainMenu");
+    }
+    */
 
     IEnumerator SlowMenu()
     {
@@ -27,9 +52,12 @@ public class Death : MonoBehaviour
 
             if (child.gameObject.name == "FinalScore")
             {
-                Debug.Log("Score: " + Level.score);
-                if (Level.score == 0) { scoreText.text = "000000"; }
-                else { StartCoroutine(IncrementCoroutine(Level.score, scoreText)); }
+                Debug.Log("Score: " + //PlayerData.player.
+                    Level.score);
+                if ( //PlayerData.player
+                    Level.score == 0) { scoreText.text = "000000"; }
+                else { StartCoroutine(IncrementCoroutine(//PlayerData.player.
+                    Level.score, scoreText)); }
             }
             else if (child.gameObject.name == "TryAgain")
             {
@@ -42,7 +70,8 @@ public class Death : MonoBehaviour
             else if (i == 3) { yield return new WaitForSeconds(1f); }
             else if (i == 4)
             {
-                if (Level.score == 0) { yield return new WaitForSeconds(1f); }
+                if (//PlayerData.player
+                    Level.score == 0) { yield return new WaitForSeconds(1f); }
                 else { yield return new WaitForSeconds(3.5f); }
             }
             else { yield return new WaitForSeconds(0.75f); }
