@@ -34,7 +34,7 @@ public class EndLevel : MonoBehaviour
         {
             completedPanel.gameObject.SetActive(true);
             this.gameObject.SetActive(false);
-            //level.GameComplete();
+            //level.GameComplete(); - Couldn't get this to work
         }
         else { Level.currentLevel++;  SceneManager.LoadScene("Level"); }
     }

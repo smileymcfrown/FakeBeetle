@@ -53,23 +53,16 @@ public class Level : MonoBehaviour
  
 void Start()
     {
+        /* Uncomment if loading Level.Scene directly instead of playing through MainMenu.Scene */
+        LoadSave.Load();
+
+        /* Attempted to create a PlayerData class to hold player score and current level.. It failed. */
         //PlayerData.player = new PlayerData();
         //PlayerData.player.score = 0;
 
-        paused = false;
-        LoadSave.Load();
-        startPos = new Vector3(-2.99f, -2.95f, 0f);
-
-        //if(PlayerData.player.score == 0)
-        //{
-        //    PlayerData.player.currentLevel = 0;
-        //}
-        //else
-        //{
-        //    PlayerData.player.currentLevel = 1;
-        //}
+        // Forcing levels to load correctly because I haven't implemented saving the levels into the List<>
+        // correctly. This way the correct level order occurs regardless of position in the List<>
         bool foundLevel = false;
-        Debug.Log("Saved Levels: " + LoadSave.savedLevels.Count);
         foreach (LevelData level in LoadSave.savedLevels)
         {
             if (currentLevel == 0 && level.levelName.Contains("razil"))
@@ -97,34 +90,44 @@ void Start()
         if (!foundLevel)
         {
             Debug.Log("FAIL - Default Level Loaded!");
-            LevelData.openLevel = LoadSave.savedLevels[0];//PlayerData.player.currentLevel];
+            LevelData.openLevel = LoadSave.savedLevels[0]; //PlayerData.player.currentLevel];
         }
 
 
-        if (LevelData.openLevel.turns == 0) { turnsRemaining = 66; }
-        else { turnsRemaining = LevelData.openLevel.turns; }
-
-        // Might not be needed if loading scene anew when starting next level.
-        turnsText.gameObject.SetActive(true);
-        scoreText.gameObject.SetActive(true);
-        UpdateHUD();
-
-        
-
-        // Just code to show the objects in the array
+        // ######### Just code to show the objects in the array... can be deleted after testing.
         string levelArray = "Objects ";
         for (int x = 0; x < LevelData.openLevel.layout.GetLength(0); ++x)
         {
             for (int y = 0; y < LevelData.openLevel.layout.GetLength(1); ++y)
             {
-                levelArray = levelArray + LevelData.openLevel.layout[x,y] + " , ";
+                levelArray = levelArray + LevelData.openLevel.layout[x, y] + " , ";
             }
         }
         Debug.Log(levelArray);
 
+
+        // Make sure game is not paused and starting coordinates set.
+        paused = false;
+        startPos = new Vector3(-2.99f, -2.95f, 0f);
+
+        // Set number of turns for the current level
+        turnsRemaining = LevelData.openLevel.turns;
+
+
+        // ######### Might not be needed if loading scene anew when starting next level?
+        turnsText.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(true);
+
+
+        // Update HUD with Turns
+        UpdateHUD();
+
+        // Change the background to match the level
         GameObject.Find("Level").GetComponent<SpriteRenderer>().sprite = backgroundList[currentLevel];
 
-
+        // If Levels don't exist, then most likely, the levels.ld file in Assests/StreamingAssets folder is missing!
+        // Otherwise there is an error somewhere and the level will be populated with a default level declared
+        // in the massive array at the top of this script.
         if (LevelData.openLevel.levelName != "")
         {
             // Go through level array and populate cells
@@ -235,13 +238,15 @@ void Start()
                 }
             }
         }
+
+
+        // #########
+        /* Temporary Code for using massive array declared at top if no saved level is found.
+         * Can be deleted when finished testing and level data is saved to a file
+         * that won't be deleted for sure.
+         */
         else
         {
-            /*  Temporary Code for using massive array declared above if no saved level is found.
-             *  Can be deleted when finished testing and level data is saved a file
-             *  that won't be deleted for sure.
-             */
-
             // Get layout Array
             for (int x = 0; x < layout.GetLength(0); ++x)
             {
@@ -266,27 +271,28 @@ void Start()
             }
         }
 
+
+        // Set the start time for the game and the level
         if (currentLevel == 0) { gameStartTime = Time.time; levelStartTime = Time.time; }
         else { levelStartTime = Time.time; }
     }
 
+    // Update Turns and Score HUD
     public void UpdateHUD() 
     {
         turnsText.text = string.Format("Turns: {0}", turnsRemaining.ToString("D2"));
         scoreText.text = string.Format("{0}", score.ToString("D6")); //PlayerData.player.score.ToString("D6"));
     }
 
+    // Hide HUD and show Death UI
     public void Death()
     {
         turnsText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
-        //Set score for testing purposes
-        //PlayerData.player.
-            score = 104853;
-        
         deathPanel.SetActive(true);
     }
 
+    // Hide HUD and show Level Complete UI
     public void LevelComplete()
     {
         turnsText.gameObject.SetActive(false);
@@ -300,6 +306,8 @@ void Start()
 
 
     }
+
+    // Hide HUD and show Game Complete UI
     public void GameComplete()
     {
         //if (//PlayerData.player.
@@ -310,9 +318,5 @@ void Start()
         //}
         //else
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 }

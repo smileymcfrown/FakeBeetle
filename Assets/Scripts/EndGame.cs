@@ -16,24 +16,37 @@ public class EndGame : MonoBehaviour
         StartCoroutine(SlowMenu());
     }
 
-    public void StartAgain()
+    public void Leave(bool restart)
     {
         Debug.Log("Inside StartAgain");
 
         Level.currentLevel = 0;
         Level.score = 0;
         LevelData.openLevel = LoadSave.savedLevels[0];
-        SceneManager.LoadScene("Level");
+        PlayerMovement.tempLayout = LevelData.openLevel.layout;
+        if (restart) { SceneManager.LoadScene("Level"); }
+        else { SceneManager.LoadScene("MainMenu"); }
     }
-    public void MainMenu()
-    {
-        Debug.Log("Inside Quit");
 
-        Level.currentLevel = 0;
-        Level.score = 0;
-        LevelData.openLevel = LoadSave.savedLevels[0];
-        SceneManager.LoadScene("MainMenu");
-    }
+    /* public void StartAgain()
+     {
+         Debug.Log("Inside StartAgain");
+
+         Level.currentLevel = 0;
+         Level.score = 0;
+         //LevelData.openLevel = LoadSave.savedLevels[0];
+         SceneManager.LoadScene("Level");
+     }
+     public void MainMenu()
+     {
+         Debug.Log("Inside Quit");
+
+         Level.currentLevel = 0;
+         Level.score = 0;
+         LevelData.openLevel = LoadSave.savedLevels[0];
+         SceneManager.LoadScene("MainMenu");
+     }
+    */
 
     IEnumerator SlowMenu()
     {
@@ -69,13 +82,13 @@ public class EndGame : MonoBehaviour
                 wait = 3.5f;
                 StartCoroutine(IncrementPoints(result, wait, timeText));
             }
-            else if (child.gameObject.name == "TotalResult")
+            else if (child.gameObject.name == "ScoreResult")
             {
                 wait = 3.5f;
                 StartCoroutine(IncrementPoints(  //PlayerData.player
                 Level.score, wait, scoreText));
             }
-            else if (child.gameObject.name == "NextLevel")
+            else if (child.gameObject.name == "StartAgain")
             {
                 wait = 1f;
                 EventSystem.current.SetSelectedGameObject(child.gameObject);

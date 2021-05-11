@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelEditor : MonoBehaviour
 {
@@ -58,14 +59,16 @@ public class LevelEditor : MonoBehaviour
         { for (int j = 0; j < LevelData.openLevel.layout.GetLength(1); j++) { LevelData.openLevel.layout[i, j] = "empty"; } }
 
         // Instantiate player object immediately at default position with highest sorting order
+        startLeft = true;
         Vector3 newPos = placeOrigin + new Vector3(-3, -2, 0);
         player = Instantiate(togglePrefab, newPos, Quaternion.identity);
         player.name = playerSprite.name;
         player.GetComponent<SpriteRenderer>().sprite = playerSprite;
         LevelData.openLevel.layout[0, 0] = player.name;
         player.GetComponent<SpriteRenderer>().sortingOrder = 11;
-        
+
         // Instantiate gate object immediately at default position with lowest sorting order
+        gateRight = true;
         newPos = placeOrigin + new Vector3(3, 2.8f, 0);
         gate = Instantiate(togglePrefab, newPos, Quaternion.identity);
         gate.name = gateSprite.name;
@@ -416,5 +419,11 @@ public class LevelEditor : MonoBehaviour
         //checker.name = "CHEKER_"+ placeSprite.name;
         //checker.GetComponent<SpriteRenderer>().sprite = placeSprite;
         EventSystem.current.SetSelectedGameObject(GameObject.Find(returnSelect));
+    }
+
+    // Back to Main Menu - Untested! May need to reset some variables!
+    public void QuitEditor()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
