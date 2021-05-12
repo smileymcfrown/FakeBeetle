@@ -8,6 +8,22 @@ public static class LoadSave
 {
     public static List<LevelData> savedLevels = new List<LevelData>();
 
+
+    // Loading and Saving Level Data to streamingAssetsPath/levels.ld so it will appear in the build folder
+    // Saved levels are loaded into LevelData.savedLevels list to be accessed by the game.
+
+    public static void Load()
+    {
+        if (File.Exists(Application.streamingAssetsPath + "/levels.ld"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.streamingAssetsPath + "/levels.ld", FileMode.Open);
+            LoadSave.savedLevels = (List<LevelData>)bf.Deserialize(file);
+            file.Close();
+            Debug.Log(Application.streamingAssetsPath);
+        }
+    }
+
     public static void Save()
     {
         if (LevelData.openLevel.levelName.Contains("razil"))
@@ -33,18 +49,5 @@ public static class LoadSave
         file.Close();
         Debug.Log(Application.streamingAssetsPath);
     }
-
-    public static void Load()
-    {
-        if (File.Exists(Application.streamingAssetsPath + "/levels.ld"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.streamingAssetsPath + "/levels.ld", FileMode.Open);
-            LoadSave.savedLevels = (List<LevelData>)bf.Deserialize(file);
-            file.Close();
-            Debug.Log(Application.streamingAssetsPath);
-        }
-    }
-
 }
 

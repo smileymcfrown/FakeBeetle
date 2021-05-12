@@ -11,11 +11,13 @@ public class EndGame : MonoBehaviour
     public Text timeText;
     public Text scoreText;
 
+    // Script runs when Game Complete UI Panel is activated and loads each item one at a time.
     private void OnEnable()
     {
         StartCoroutine(SlowMenu());
     }
 
+    // Either return to main menu or reset variables and start game again
     public void Leave(bool restart)
     {
         Debug.Log("Inside StartAgain");
@@ -28,26 +30,7 @@ public class EndGame : MonoBehaviour
         else { SceneManager.LoadScene("MainMenu"); }
     }
 
-    /* public void StartAgain()
-     {
-         Debug.Log("Inside StartAgain");
-
-         Level.currentLevel = 0;
-         Level.score = 0;
-         //LevelData.openLevel = LoadSave.savedLevels[0];
-         SceneManager.LoadScene("Level");
-     }
-     public void MainMenu()
-     {
-         Debug.Log("Inside Quit");
-
-         Level.currentLevel = 0;
-         Level.score = 0;
-         LevelData.openLevel = LoadSave.savedLevels[0];
-         SceneManager.LoadScene("MainMenu");
-     }
-    */
-
+    // Coroutine to run through menu items loading them with a delay depending on the item.
     IEnumerator SlowMenu()
     {
         for (int i = 0; i < transform.childCount; ++i)
@@ -100,14 +83,13 @@ public class EndGame : MonoBehaviour
         }
     }
 
+    // Coroutine to make points counts up from zero
     private IEnumerator IncrementPoints(int result, float wait, Text resultText)
     {
         int startScore = 0;
         float time = 0;
         float countTime;
 
-        //if (result < 100) { countTime = 1.5; }
-        //else { countTime = 3; }
         countTime = wait - 0.5f;
 
         resultText.text = startScore.ToString();

@@ -10,18 +10,15 @@ public class Death : MonoBehaviour
     GameObject child;
     public Text scoreText;
 
-    void Start()
-    {
-    }
-
+    // Script runs when Death UI Panel is activated and loads each menu item one at a time.
     private void OnEnable()
     {
         StartCoroutine(SlowMenu());
     }
+
+    // Either return to main menu or reset variables and start game again
     public void Leave(bool restart)
     {
-        Debug.Log("Inside StartAgain");
-
         Level.currentLevel = 0;
         Level.score = 0;
         LevelData.openLevel = LoadSave.savedLevels[0];
@@ -30,19 +27,7 @@ public class Death : MonoBehaviour
         else { SceneManager.LoadScene("MainMenu"); }
     }
 
-    /* 
-     * Combined into Leave(bool)
-     *
-    public void MainMenu()
-    {
-        Debug.Log("Inside Quit");
-
-        Level.currentLevel = 0;
-        Level.score = 0;
-        SceneManager.LoadScene("MainMenu");
-    }
-    */
-
+    // Coroutine to run through menu items loading them with a delay depending on the item.
     IEnumerator SlowMenu()
     {
         for (int i = 0; i < transform.childCount; ++i)
@@ -56,7 +41,7 @@ public class Death : MonoBehaviour
                     Level.score);
                 if ( //PlayerData.player
                     Level.score == 0) { scoreText.text = "000000"; }
-                else { StartCoroutine(IncrementCoroutine(//PlayerData.player.
+                else { StartCoroutine(IncrementCount(//PlayerData.player.
                     Level.score, scoreText)); }
             }
             else if (child.gameObject.name == "TryAgain")
@@ -81,7 +66,8 @@ public class Death : MonoBehaviour
         yield break;
     }
 
-    private IEnumerator IncrementCoroutine(int result, Text resultText)
+    // Coroutine to make points counts up from zero
+    private IEnumerator IncrementCount(int result, Text resultText)
     {
         int startScore = 0;
         float time = 0;
@@ -99,10 +85,5 @@ public class Death : MonoBehaviour
             }
         }
         else { yield break; }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }
