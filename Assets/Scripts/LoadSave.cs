@@ -36,7 +36,7 @@ public static class LoadSave
 
     public static void Load()
     {
-        if (File.Exists(Application.persistentDataPath + "/levels.ld"))
+        if (File.Exists(Application.streamingAssetsPath + "/levels.ld"))
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.streamingAssetsPath + "/levels.ld", FileMode.Open);

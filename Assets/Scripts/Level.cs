@@ -65,6 +65,8 @@ void Start()
         bool foundLevel = false;
         foreach (LevelData level in LoadSave.savedLevels)
         {
+            Debug.Log("foreach: " + level.levelName);
+
             if (currentLevel == 0 && level.levelName.Contains("razil"))
             {
                 Debug.Log("Level: Brazil");
