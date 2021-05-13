@@ -20,4 +20,9 @@ public class LevelData
         background = "temp_level_opaque";
         gate = "gate_straya";
     }
+
+    public string LevelName()
+    {
+        return this.levelName;
+    }
 }

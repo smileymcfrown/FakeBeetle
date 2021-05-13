@@ -49,12 +49,22 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) { Level.paused = true;  level.Death(); } // Lazy way to quit without a confirmation menu or more code.
+
         // Pausing movement whilst allowing coroutines to run for menu transitions.
         if(!Level.paused)
         {
             // ***** Input - On axis movement, true direction found, and MovementCheck() called to check obstacles.
             if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
             {
+                // Death - Wait until player has settled on their new square before killing them.
+                // Check for no more turns and end the game.
+                if (Level.turnsRemaining == 0)
+                {
+                    Level.paused = true;
+                    level.Death();
+                }
+
                 // Check for Horizontal Axis
                 if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
                 {
@@ -130,13 +140,6 @@ public class PlayerMovement : MonoBehaviour
                     level.LevelComplete();
                 }
             }
-
-            // Death - Check for no more turns and end the game.
-            if (Level.turnsRemaining == 0)
-            {
-                Level.paused = true;
-                level.Death();
-            }
         }
     }
 
@@ -205,16 +208,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (tempLayout[12, 8].Contains("gate"))
             {
-                Debug.Log("4");
-
                 if (newPosX > tempLayout.GetLength(0) - 1)
                 { newPosX = tempLayout.GetLength(0) - 1; }
                 
             }
             else
             {
-                Debug.Log("5");
-
                 if (newPosX < 0)
                 { newPosX = 0; }
             }
@@ -222,15 +221,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (gotMask == true)
                 {
-                    Debug.Log("6");
-
                     movePoint.position += new Vector3(0f, 1, 0f);
                     transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-                    Level.turnsRemaining--;
+                    // Felt bad about making the player lose a turn taking the final step into the gate.
+                    // Level.turnsRemaining--;
                     level.UpdateHUD();
                     endLevel = true;
                 }
-                Debug.Log("7");
                 return false;
             }
         }
@@ -461,7 +458,7 @@ public class PlayerMovement : MonoBehaviour
             }
             Debug.Log("Security Fail 3");
 
-            //Why didn't this work intead?:  transform.position += new Vector3(0, -(moveAmount * Time.deltaTime), 0);
+            //Why didn't this work intead? -> transform.position -= new Vector3(0, moveAmount * Time.deltaTime, 0); or += new Vector3(0,-(moveAmount * ...)
             transform.position = Vector3.MoveTowards(transform.position, startPos, moveSpeed * Time.deltaTime);
             
             yield return null;

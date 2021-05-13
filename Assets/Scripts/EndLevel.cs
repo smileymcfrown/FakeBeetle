@@ -13,44 +13,43 @@ public class EndLevel : MonoBehaviour
     public Text timeText;
     public Text totalText;
     public GameObject completedPanel;
-    //public Button nextButton;
 
-    void Start()
-    {
-    }
-  
+    // Script runs when Game Complete UI Panel is activated and runs coroutine to load each item one at a time.
     private void OnEnable()
     {
-        Debug.Log("Inside OnEnable");
-
-        StartCoroutine(SlowMenu());
+       StartCoroutine(SlowMenu());
     }
 
+    // Does what it says
     public void NextLevel()
     {
-        Debug.Log("Inside NextLevel");
-        //PlayerData.player
+        //Check if level is the final level and either activate Game Complete panel or go to next level
         if(LevelData.openLevel.levelName == "Egypt")
         {
+            //level.GameComplete(); - Couldn't get this to work
+
             completedPanel.gameObject.SetActive(true);
             this.gameObject.SetActive(false);
-            //level.GameComplete(); - Couldn't get this to work
         }
         else { Level.currentLevel++;  SceneManager.LoadScene("Level"); }
     }
+
+    // Goes back to the main menu clearing game variables
     public void QuitGame()
     {
-        Debug.Log("Inside Quit");
-        //PlayerData.player.currentLevel++;
+        //PlayerData.player.currentLevel = 0;  - doesn't work
+
         Level.currentLevel = 0;
         Level.score = 0;
         SceneManager.LoadScene("MainMenu");
     }
 
+    // Coroutine to run through menu items loading them with a delay depending on the item.
     IEnumerator SlowMenu()
     {
         Debug.Log("Inside SlowMenu");
         
+        // Cycle through child elements and set delays after each item
         for (int i = 0; i < transform.childCount; ++i)
         {
             int result = 0;
@@ -103,41 +102,28 @@ public class EndLevel : MonoBehaviour
                 EventSystem.current.SetSelectedGameObject(child.gameObject);
             }
             else { wait = 1f; }
+
             yield return new WaitForSeconds(wait);
-            //if (i == 0 || i % 2 == 1) { yield return new WaitForSeconds(2f); }
-            //else if (i == 2) { yield return new WaitForSeconds(3f); }
-            //else if (i % 2 == 0) { yield return new WaitForSeconds(5f); }
-            //if(i == transform.childCount - 2)
-            //{
-            //    EventSystem.current.SetSelectedGameObject(GameObject.Find("NextLevel"));
-            //}
         }
     }
 
-private IEnumerator IncrementPoints(int result, float wait, Text resultText)
+    // SubCoroutine to show points increasing from 0 to the result
+    private IEnumerator IncrementPoints(int result, float wait, Text resultText)
     {
-        int startScore = 0;
-        float time = 0;
         float countTime;
-
-        //if (result < 100) { countTime = 1.5; }
-        //else { countTime = 3; }
         countTime = wait - 0.5f;
-        
-        resultText.text = startScore.ToString();
+        resultText.text = "0";
+        float time = 0;
 
+        // Run a linear interpolation to show all numbers from 0 to 'result' in the specified time.
         while (time < countTime)
         {
             yield return null;
             time += Time.deltaTime;
             float factor = time / countTime;
-            resultText.text = ((int)Mathf.Lerp(startScore, result, factor)).ToString();
+            resultText.text = ((int)Mathf.Lerp(0, result, factor)).ToString();
         }
-        yield break;
-    }
 
-// Update is called once per frame
-void Update()
-    {
+        yield break;
     }
 }

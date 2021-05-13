@@ -16,7 +16,7 @@ public class Death : MonoBehaviour
         StartCoroutine(SlowMenu());
     }
 
-    // Either return to main menu or reset variables and start game again
+    // Reset variables and either return to main menu or start game again
     public void Leave(bool restart)
     {
         Level.currentLevel = 0;
@@ -30,43 +30,44 @@ public class Death : MonoBehaviour
     // Coroutine to run through menu items loading them with a delay depending on the item.
     IEnumerator SlowMenu()
     {
+        // Cycle through child elements of Death panel
         for (int i = 0; i < transform.childCount; ++i)
         {
+            //Populate variable 'child' with each element in the menu and set it active. 
             child = transform.GetChild(i).gameObject;
             child.SetActive(true);
 
+            // Check if final score is zero (first level death) or not to adjust delay before next element.
             if (child.gameObject.name == "FinalScore")
             {
-                Debug.Log("Score: " + //PlayerData.player.
-                    Level.score);
-                if ( //PlayerData.player
-                    Level.score == 0) { scoreText.text = "000000"; }
-                else { StartCoroutine(IncrementCount(//PlayerData.player.
-                    Level.score, scoreText)); }
+                if ( Level.score == 0) { scoreText.text = "000000"; } // PlayerData.player.score if I get it working (I won't)
+                else { StartCoroutine(IncrementCount(Level.score, scoreText)); }
             }
+            // Once the menu buttons are set active, make the default 'Try Again'
             else if (child.gameObject.name == "TryAgain")
             {
                 EventSystem.current.SetSelectedGameObject(GameObject.Find("TryAgain"));
             }
 
+            // Setting menu delays to allow for the counting of numbers (or not) from the second coroutine because I
+            // haven't done enough study of subcoroutines to see how to pause the parent while it runs.
             if (i == 0) { yield return new WaitForSeconds(1f); }
             else if (i == 1) { yield return new WaitForSeconds(1.5f); }
             else if (i == 2) { yield return new WaitForSeconds(2f); }
             else if (i == 3) { yield return new WaitForSeconds(1f); }
             else if (i == 4)
             {
-                if (//PlayerData.player
-                    Level.score == 0) { yield return new WaitForSeconds(1f); }
+                if (Level.score == 0) { yield return new WaitForSeconds(1f); }
                 else { yield return new WaitForSeconds(3.5f); }
             }
             else { yield return new WaitForSeconds(0.75f); }
-
-
         }
-        yield break;
+
+
+        yield break;  // Is this necessary? I would like to know.
     }
 
-    // Coroutine to make points counts up from zero
+    // SubCoroutine to show points increasing from 0 to the result
     private IEnumerator IncrementCount(int result, Text resultText)
     {
         int startScore = 0;
@@ -84,6 +85,7 @@ public class Death : MonoBehaviour
                 resultText.text = ((int)Mathf.Lerp(startScore, result, factor)).ToString();
             }
         }
-        else { yield break; }
+
+        else { yield break; } // Again, is this necessary?
     }
 }

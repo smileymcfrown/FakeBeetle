@@ -11,17 +11,15 @@ public class EndGame : MonoBehaviour
     public Text timeText;
     public Text scoreText;
 
-    // Script runs when Game Complete UI Panel is activated and loads each item one at a time.
+    // Script runs when Game Complete UI Panel is activated and runs coroutine to load each item one at a time.
     private void OnEnable()
     {
         StartCoroutine(SlowMenu());
     }
 
-    // Either return to main menu or reset variables and start game again
+    // Reset variables and either return to main menu or start game again
     public void Leave(bool restart)
     {
-        Debug.Log("Inside StartAgain");
-
         Level.currentLevel = 0;
         Level.score = 0;
         LevelData.openLevel = LoadSave.savedLevels[0];
@@ -35,12 +33,12 @@ public class EndGame : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; ++i)
         {
-            int result = 0;
+            int result = 0; // Store score for each catagory to send to subcoroutine IncrementPoints()
             float wait;
             child = transform.GetChild(i).gameObject;
             child.SetActive(true);
-            Debug.Log("Inside EndSlowMenu");
-
+            
+            // Check the name of each child element and set appropriate delay before showing next element
             if (child.name == "Epilogue")
             {
                 Debug.Log("Inside Epilogue");
@@ -77,30 +75,28 @@ public class EndGame : MonoBehaviour
                 EventSystem.current.SetSelectedGameObject(child.gameObject);
             }
             else { wait = 1f; }
-            Debug.Log("Just before yield");
-
+            
             yield return new WaitForSeconds(wait);
         }
     }
 
-    // Coroutine to make points counts up from zero
+    // SubCoroutine to show points increasing from 0 to the result
     private IEnumerator IncrementPoints(int result, float wait, Text resultText)
     {
-        int startScore = 0;
-        float time = 0;
         float countTime;
-
         countTime = wait - 0.5f;
+        resultText.text = "0";
+        float time = 0;
 
-        resultText.text = startScore.ToString();
-
+        // Run a linear interpolation to show all numbers from 0 to 'result' in the specified time.
         while (time < countTime)
         {
             yield return null;
             time += Time.deltaTime;
             float factor = time / countTime;
-            resultText.text = ((int)Mathf.Lerp(startScore, result, factor)).ToString();
+            resultText.text = ((int)Mathf.Lerp(0, result, factor)).ToString();
         }
+
         yield break;
     }
 }

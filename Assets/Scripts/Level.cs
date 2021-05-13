@@ -300,20 +300,14 @@ void Start()
         turnsText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
         paused = true;
-        // Time.timeScale = 0;
-
-        {
-            endPanel.SetActive(true);
-        }
-
-
+        endPanel.SetActive(true);
     }
 
     // Hide HUD and show Game Complete UI
     public void GameComplete()
     {
-        //if (//PlayerData.player.
-        //currentLevel == 2)
+        // Again, commented code for a failed attempt to use a PlayerData class to store game variables.
+        //if (PlayerData.player.currentLevel == 2)
         //{
         endPanel.SetActive(false);
        // gameCompletePanel.SetActive(true);

@@ -98,17 +98,17 @@ public class LevelEditor : MonoBehaviour
     {
         
         // This code was for setting if the generated object should be offset or not.
-        // Possibly obsolete.
+        // ** Possibly obsolete. **
 
         /* if (EventSystem.current.currentSelectedGameObject.name == "Grid")
-        { }
-        else { 
-        if(EventSystem.current.currentSelectedGameObject.name == "btnSpecial")
-        { barriers = true; }
-        else if (EventSystem.current.currentSelectedGameObject.name == "btnObjects")
-        { barriers = false; }
-        else
-        { */
+         * { }
+         * else { 
+         * if(EventSystem.current.currentSelectedGameObject.name == "btnSpecial")
+         * { barriers = true; }
+         * else if (EventSystem.current.currentSelectedGameObject.name == "btnObjects")
+         * { barriers = false; }
+         * else { 
+         */
         
         //Stop mouse clicks removing focus from the menu by always returning to last selected is nothing is selected.
         if (EventSystem.current.currentSelectedGameObject == null)
@@ -263,34 +263,6 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
-    /* Keeping old SelectRight function in case new combined SelectLeftRight function doesn't work.
-    public void SelectRight(string name)
-    {
-        Debug.Log("Right: " + name);
-        if (name == "btnObjects")
-        {
-            if (objectsPos == objects.Length - 1) { objectsPos = 0; }
-            else { objectsPos++; }
-            objectsButton.GetComponent<Image>().sprite = objects[objectsPos];
-            objectsRight.sprite = icons[9];
-        }
-    } */
-
-    /* Keeping old code of PlaceSpecial just in case until testing complete. Code combined into PlaceObject below.
-        public void PlaceSpecial()
-    {
-        // Sprite placeSprite = specialRenderer.sprite;
-        Sprite placeSprite = specialButton.GetComponent<Image>().sprite;
-        objectName = placeSprite.name;
-        GameObject newObject = Instantiate(objectsPrefab, placeOrigin, Quaternion.identity);
-        newObject.name = objectName;
-        //newObject.GetComponent<>().objectName = objectName;
-        newObject.GetComponent<SpriteRenderer>().sprite = placeSprite;
-        //objectRenderer.sprite = special[specialPos]; 
-        //Instantiate(specialPrefab, specialOrigin, Quaternion.identity);
-        //placing = true;
-    } */
-
     // PlaceObject instantiates selected object on the grid at the default position
     public void PlaceObject()
     {
@@ -370,6 +342,14 @@ public class LevelEditor : MonoBehaviour
         
     }
 
+    // Back to Main Menu
+    public void QuitEditor()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+
+    // Loads a saved level from the list into the editor.. NOT WORKING!
     public void LoadLayout(int levelIndex)
     {
             // ** Load item chosen from the list
@@ -380,10 +360,7 @@ public class LevelEditor : MonoBehaviour
             // All level data should now be accessible from whatever script using
             // LevelData.openLevel.(levelName, layout[,], turns, background
     }
-
-
-
-
+ 
     // Test function to check AddObject is working.. can be deleted after testing!
     public void CheckObject(int posX, int posY)
     {
@@ -419,11 +396,5 @@ public class LevelEditor : MonoBehaviour
         //checker.name = "CHEKER_"+ placeSprite.name;
         //checker.GetComponent<SpriteRenderer>().sprite = placeSprite;
         EventSystem.current.SetSelectedGameObject(GameObject.Find(returnSelect));
-    }
-
-    // Back to Main Menu - Untested! May need to reset some variables!
-    public void QuitEditor()
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 }
