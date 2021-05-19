@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.litefeel.bitmapfontimporter": "file:C:/Users/3c4c7dbd5ff73ab5/Documents/Unity-BitmapFontImporter-3.2.0",
     "com.unity.2d.animation": "5.0.3",
     "com.unity.2d.pixel-perfect": "4.0.1",
     "com.unity.2d.psdimporter": "4.0.2",

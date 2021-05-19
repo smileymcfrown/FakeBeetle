@@ -1,0 +1,1920 @@
+fileFormatVersion: 2
+guid: c5a4b0b535095bd48bc82a09b1679495
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7973563693738845440
+    second: x-ray_anim_0000_7x11_0
+  - first:
+      213: -3913516388594640243
+    second: x-ray_anim_0000_7x11_1
+  - first:
+      213: -1671230399687966321
+    second: x-ray_anim_0000_7x11_2
+  - first:
+      213: -5990218451084655875
+    second: x-ray_anim_0000_7x11_3
+  - first:
+      213: -3634013018548423665
+    second: x-ray_anim_0000_7x11_4
+  - first:
+      213: -745237577201084586
+    second: x-ray_anim_0000_7x11_5
+  - first:
+      213: -8553493991627368000
+    second: x-ray_anim_0000_7x11_6
+  - first:
+      213: 3984148621802019322
+    second: x-ray_anim_0000_7x11_7
+  - first:
+      213: -3260965756429004776
+    second: x-ray_anim_0000_7x11_8
+  - first:
+      213: -3217777403143904795
+    second: x-ray_anim_0000_7x11_9
+  - first:
+      213: 3524570714035911040
+    second: x-ray_anim_0000_7x11_10
+  - first:
+      213: 302619617610037418
+    second: x-ray_anim_0000_7x11_11
+  - first:
+      213: 3800383551885739616
+    second: x-ray_anim_0000_7x11_12
+  - first:
+      213: -1226366699393530699
+    second: x-ray_anim_0000_7x11_13
+  - first:
+      213: 7624750598883575368
+    second: x-ray_anim_0000_7x11_14
+  - first:
+      213: -8835351934779877250
+    second: x-ray_anim_0000_7x11_15
+  - first:
+      213: -7833198559837485644
+    second: x-ray_anim_0000_7x11_16
+  - first:
+      213: 6113099060452097048
+    second: x-ray_anim_0000_7x11_17
+  - first:
+      213: 6704728986041955355
+    second: x-ray_anim_0000_7x11_18
+  - first:
+      213: -3140931158534202224
+    second: x-ray_anim_0000_7x11_19
+  - first:
+      213: -3249607461007751679
+    second: x-ray_anim_0000_7x11_20
+  - first:
+      213: 2274473181454157051
+    second: x-ray_anim_0000_7x11_21
+  - first:
+      213: -5298473085888746395
+    second: x-ray_anim_0000_7x11_22
+  - first:
+      213: 3039237327685429368
+    second: x-ray_anim_0000_7x11_23
+  - first:
+      213: 3698172394934054934
+    second: x-ray_anim_0000_7x11_24
+  - first:
+      213: -3782047940795801439
+    second: x-ray_anim_0000_7x11_25
+  - first:
+      213: 1336739068605839279
+    second: x-ray_anim_0000_7x11_26
+  - first:
+      213: -2958872474599475228
+    second: x-ray_anim_0000_7x11_27
+  - first:
+      213: 8412594148630870654
+    second: x-ray_anim_0000_7x11_28
+  - first:
+      213: -2855418451317295789
+    second: x-ray_anim_0000_7x11_29
+  - first:
+      213: -479195427595550009
+    second: x-ray_anim_0000_7x11_30
+  - first:
+      213: 5915926791169400691
+    second: x-ray_anim_0000_7x11_31
+  - first:
+      213: -3979360314293668047
+    second: x-ray_anim_0000_7x11_32
+  - first:
+      213: 2041316129007100603
+    second: x-ray_anim_0000_7x11_33
+  - first:
+      213: 6079096141835326330
+    second: x-ray_anim_0000_7x11_34
+  - first:
+      213: -2254655186394229593
+    second: x-ray_anim_0000_7x11_35
+  - first:
+      213: -5325294708835968620
+    second: x-ray_anim_0000_7x11_36
+  - first:
+      213: -5211034044665767462
+    second: x-ray_anim_0000_7x11_37
+  - first:
+      213: 182523060354303488
+    second: x-ray_anim_0000_7x11_38
+  - first:
+      213: -583884282213512991
+    second: x-ray_anim_0000_7x11_39
+  - first:
+      213: -6954479932586890111
+    second: x-ray_anim_0000_7x11_40
+  - first:
+      213: 2368494950866263094
+    second: x-ray_anim_0000_7x11_41
+  - first:
+      213: 6781377263134249084
+    second: x-ray_anim_0000_7x11_42
+  - first:
+      213: 9181646533100218303
+    second: x-ray_anim_0000_7x11_43
+  - first:
+      213: -8505428534462976543
+    second: x-ray_anim_0000_7x11_44
+  - first:
+      213: -1245181360187508925
+    second: x-ray_anim_0000_7x11_45
+  - first:
+      213: 3138853214017457079
+    second: x-ray_anim_0000_7x11_46
+  - first:
+      213: -5856526328811756592
+    second: x-ray_anim_0000_7x11_47
+  - first:
+      213: 977344724115160477
+    second: x-ray_anim_0000_7x11_48
+  - first:
+      213: 100927558621613512
+    second: x-ray_anim_0000_7x11_49
+  - first:
+      213: 3428158536457437481
+    second: x-ray_anim_0000_7x11_50
+  - first:
+      213: 571969093231103427
+    second: x-ray_anim_0000_7x11_51
+  - first:
+      213: 4744627095702874519
+    second: x-ray_anim_0000_7x11_52
+  - first:
+      213: -7742972246385997898
+    second: x-ray_anim_0000_7x11_53
+  - first:
+      213: 1832051306268258075
+    second: x-ray_anim_0000_7x11_54
+  - first:
+      213: -6640594382083344761
+    second: x-ray_anim_0000_7x11_55
+  - first:
+      213: -6376673797914346916
+    second: x-ray_anim_0000_7x11_56
+  - first:
+      213: 4234720241403770895
+    second: x-ray_anim_0000_7x11_57
+  - first:
+      213: -3321047864387468333
+    second: x-ray_anim_0000_7x11_58
+  - first:
+      213: -7445565757510276403
+    second: x-ray_anim_0000_7x11_59
+  - first:
+      213: -7983010551185660524
+    second: x-ray_anim_0000_7x11_60
+  - first:
+      213: -3418502618498559641
+    second: x-ray_anim_0000_7x11_61
+  - first:
+      213: -7369744286042709526
+    second: x-ray_anim_0000_7x11_62
+  - first:
+      213: -3942646019463024653
+    second: x-ray_anim_0000_7x11_63
+  - first:
+      213: -8026028754186274604
+    second: x-ray_anim_0000_7x11_64
+  - first:
+      213: 8475164214629544796
+    second: x-ray_anim_0000_7x11_65
+  - first:
+      213: 9141999817736285163
+    second: x-ray_anim_0000_7x11_66
+  - first:
+      213: 1435044280146413905
+    second: x-ray_anim_0000_7x11_67
+  - first:
+      213: -5750900622451926214
+    second: x-ray_anim_0000_7x11_68
+  - first:
+      213: 7696850030388368829
+    second: x-ray_anim_0000_7x11_69
+  - first:
+      213: 7993120569430450025
+    second: x-ray_anim_0000_7x11_70
+  - first:
+      213: -8734677537196518176
+    second: x-ray_anim_0000_7x11_71
+  - first:
+      213: -5247452970912205639
+    second: x-ray_anim_0000_7x11_72
+  - first:
+      213: -8989799153247391037
+    second: x-ray_anim_0000_7x11_73
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1460
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b9eb8f016385190800000000000000
+      internalID: -7973563693738845440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1460
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8a952b449560b9c0800000000000000
+      internalID: -3913516388594640243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_2
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1460
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f81c3c85ec89ec8e0800000000000000
+      internalID: -1671230399687966321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_3
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1460
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2cb186e087edca0800000000000000
+      internalID: -5990218451084655875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_4
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1460
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f04b648d964619dc0800000000000000
+      internalID: -3634013018548423665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_5
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1460
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65718a93f5268a5f0800000000000000
+      internalID: -745237577201084586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_6
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1460
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c9dc907882eb4980800000000000000
+      internalID: -8553493991627368000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1314
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af91fd6001a8a4730800000000000000
+      internalID: 3984148621802019322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_8
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1314
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 810165ffbe8beb2d0800000000000000
+      internalID: -3260965756429004776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_9
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1314
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e1245710882853d0800000000000000
+      internalID: -3217777403143904795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_10
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1314
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 089fad3f36ac9e030800000000000000
+      internalID: 3524570714035911040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_11
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1314
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa8f5b950fe133400800000000000000
+      internalID: 302619617610037418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_12
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1314
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066036484bcadb430800000000000000
+      internalID: 3800383551885739616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_13
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1314
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b4c7460cf11bfee0800000000000000
+      internalID: -1226366699393530699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1168
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8460763a54e80d960800000000000000
+      internalID: 7624750598883575368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_15
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1168
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7892ed1a36826580800000000000000
+      internalID: -8835351934779877250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_16
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1168
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b509c17963ea4390800000000000000
+      internalID: -7833198559837485644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_17
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1168
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c7507f43716d450800000000000000
+      internalID: 6113099060452097048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_18
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1168
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b14bb485d7bfb0d50800000000000000
+      internalID: 6704728986041955355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_19
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1168
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09cdc9fa0cb2964d0800000000000000
+      internalID: -3140931158534202224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_20
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1168
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1068c2b3b3317e2d0800000000000000
+      internalID: -3249607461007751679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1022
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf44abfce4d809f10800000000000000
+      internalID: 2274473181454157051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_22
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1022
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56c22a70dca0876b0800000000000000
+      internalID: -5298473085888746395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_23
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1022
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8782cc83f3a8d2a20800000000000000
+      internalID: 3039237327685429368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_24
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1022
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 610333e033c825330800000000000000
+      internalID: 3698172394934054934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_25
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1022
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a06e5d9f67738bc0800000000000000
+      internalID: -3782047940795801439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_26
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1022
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa733adb91d0d8210800000000000000
+      internalID: 1336739068605839279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_27
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1022
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e731df3929ffe6d0800000000000000
+      internalID: -2958872474599475228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 876
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a3cac6ec98fb470800000000000000
+      internalID: 8412594148630870654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_29
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 876
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 355f2241c048f58d0800000000000000
+      internalID: -2855418451317295789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_30
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 876
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c20d282c4e8959f0800000000000000
+      internalID: -479195427595550009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_31
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 876
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37f5ed89218991250800000000000000
+      internalID: 5915926791169400691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_32
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 876
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1373d31b0e876c8c0800000000000000
+      internalID: -3979360314293668047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_33
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 876
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb26eb73436345c10800000000000000
+      internalID: 2041316129007100603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_34
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 876
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a73da898bb94d5450800000000000000
+      internalID: 6079096141835326330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 730
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a4dafbbd0bd5b0e0800000000000000
+      internalID: -2254655186394229593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_36
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 730
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 499909b4da0c816b0800000000000000
+      internalID: -5325294708835968620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_37
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 730
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad9da374520bea7b0800000000000000
+      internalID: -5211034044665767462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_38
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 730
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0064cbf91c3788200800000000000000
+      internalID: 182523060354303488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_39
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 730
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e8cab0c650a5e7f0800000000000000
+      internalID: -583884282213512991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_40
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 730
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c63940959bc7f90800000000000000
+      internalID: -6954479932586890111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_41
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 730
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63c90b6eb959ed020800000000000000
+      internalID: 2368494950866263094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 584
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c70170901ba4c1e50800000000000000
+      internalID: 6781377263134249084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_43
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 584
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb7a2aa10e2cb6f70800000000000000
+      internalID: 9181646533100218303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_44
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 584
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1edecd4cfc5a6f980800000000000000
+      internalID: -8505428534462976543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_45
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 584
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 347f511762a38bee0800000000000000
+      internalID: -1245181360187508925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_46
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 584
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bb8a972e527f8b20800000000000000
+      internalID: 3138853214017457079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_47
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 584
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d3e379455079bea0800000000000000
+      internalID: -5856526328811756592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_48
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 584
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d7cff29d9309d00800000000000000
+      internalID: 977344724115160477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 438
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd40bf6411966100800000000000000
+      internalID: 100927558621613512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_50
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 438
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 921c4479604439f20800000000000000
+      internalID: 3428158536457437481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_51
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 438
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cdca802cda00f700800000000000000
+      internalID: 571969093231103427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_52
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 438
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7992017943d48d140800000000000000
+      internalID: 4744627095702874519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_53
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 438
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b7447414cf6b8490800000000000000
+      internalID: -7742972246385997898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_54
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 438
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1fe868d4f0cc6910800000000000000
+      internalID: 1832051306268258075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_55
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 438
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 786b776c79ed7d3a0800000000000000
+      internalID: -6640594382083344761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 292
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a36c247f08187a0800000000000000
+      internalID: -6376673797914346916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_57
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 292
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0837008f9fb4ca30800000000000000
+      internalID: 4234720241403770895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_58
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 292
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d38d11209449e1d0800000000000000
+      internalID: -3321047864387468333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_59
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 292
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcaa9cf44690ca890800000000000000
+      internalID: -7445565757510276403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_60
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 292
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49522621336a63190800000000000000
+      internalID: -7983010551185660524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_61
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 292
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76196a00bf90f80d0800000000000000
+      internalID: -3418502618498559641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_62
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 292
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae1a5f05e9869b990800000000000000
+      internalID: -7369744286042709526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 146
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ff6cc69558e849c0800000000000000
+      internalID: -3942646019463024653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_64
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 146
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d8f7ad2f51dd9090800000000000000
+      internalID: -8026028754186274604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_65
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 146
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c53b81a23f4dd9570800000000000000
+      internalID: 8475164214629544796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_66
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 146
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb6bd8d568eede70800000000000000
+      internalID: 9141999817736285163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_67
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 146
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 159451b6b2d4ae310800000000000000
+      internalID: 1435044280146413905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_68
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 146
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b1e2c7a52b030b0800000000000000
+      internalID: -5750900622451926214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_69
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 146
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db5d0cea254b0da60800000000000000
+      internalID: 7696850030388368829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96f15cbfec44dee60800000000000000
+      internalID: 7993120569430450025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_71
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e451d7ee0138c680800000000000000
+      internalID: -8734677537196518176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_72
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 0
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b4b53d335d4d27b0800000000000000
+      internalID: -5247452970912205639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x-ray_anim_0000_7x11_73
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 0
+        width: 132
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c2f494dc41dd3380800000000000000
+      internalID: -8989799153247391037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

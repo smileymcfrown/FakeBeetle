@@ -96,8 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f152468673cdc6149b7edc04aec6db9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 3
   movePoint: {fileID: 7882767597274491177}
+  objectMovePoint: {x: 0, y: 0, z: 0}
+  moveObject: nope
+  greenLight: {fileID: 21300000, guid: 9e2ef85dd1a185c4a9ffe40fc6a84767, type: 3}
+  redLight: {fileID: 21300000, guid: 444f2963f1dc7754e804e2593c6ee06c, type: 3}
 --- !u!1 &7882767597274491176
 GameObject:
   m_ObjectHideFlags: 0
