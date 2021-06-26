@@ -20,12 +20,21 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Transform movePoint;
 
-    int playersPositionX;
-    int playersPositionY;
-    int newPosX;
-    int newPosY;
 
-    stuffInGird[,] grid = new stuffInGird[10, 10];
+   public LayerMask whatStopsMovement;
+
+   // If the code does not work, it is possible that the code below needs to be uncommented! 
+   // This code was commented out to resolve a merge conflict between Developer and Main.
+   // It's not my code, but no one else is resolving the merge conflicts in these pull requests.
+   // Main had the code below and not the line abouve; Developer the opposite.
+   //
+   // int playersPositionX;
+   // int playersPositionY;
+   // int newPosX;
+   // int newPosY;
+
+   // stuffInGird[,] grid = new stuffInGird[10, 10];
+
 
     // Start is called before the first frame update
     void Start()
@@ -84,11 +93,22 @@ public class PlayerMovement : MonoBehaviour
 
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
-                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement))
+                {
+                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                }
             }
             else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
             {
-                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement))
+                {
+                    movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                }
+
+                // Code removed in merge conflict with if statement above.
+                // movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+
             }
         }
 
@@ -96,9 +116,3 @@ public class PlayerMovement : MonoBehaviour
         
     }
 }
-
-//enum grid[10,10]
-
-//vector2 pos = vector2 (x * 1 + 0.5,  y * 1 + 0.5);
-
-
