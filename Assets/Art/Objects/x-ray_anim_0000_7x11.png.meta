@@ -225,7 +225,7 @@ TextureImporter:
       213: -8989799153247391037
     second: x-ray_anim_0000_7x11_73
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -246,6 +246,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -254,9 +255,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -284,6 +285,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -335,6 +337,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1912,6 +1926,81 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      x-ray_anim_0000_7x11_60: -7983010551185660524
+      x-ray_anim_0000_7x11_63: -3942646019463024653
+      x-ray_anim_0000_7x11_49: 100927558621613512
+      x-ray_anim_0000_7x11_61: -3418502618498559641
+      x-ray_anim_0000_7x11_16: -7833198559837485644
+      x-ray_anim_0000_7x11_30: -479195427595550009
+      x-ray_anim_0000_7x11_70: 7993120569430450025
+      x-ray_anim_0000_7x11_62: -7369744286042709526
+      x-ray_anim_0000_7x11_71: -8734677537196518176
+      x-ray_anim_0000_7x11_22: -5298473085888746395
+      x-ray_anim_0000_7x11_41: 2368494950866263094
+      x-ray_anim_0000_7x11_72: -5247452970912205639
+      x-ray_anim_0000_7x11_3: -5990218451084655875
+      x-ray_anim_0000_7x11_18: 6704728986041955355
+      x-ray_anim_0000_7x11_25: -3782047940795801439
+      x-ray_anim_0000_7x11_7: 3984148621802019322
+      x-ray_anim_0000_7x11_19: -3140931158534202224
+      x-ray_anim_0000_7x11_4: -3634013018548423665
+      x-ray_anim_0000_7x11_0: -7973563693738845440
+      x-ray_anim_0000_7x11_44: -8505428534462976543
+      x-ray_anim_0000_7x11_48: 977344724115160477
+      x-ray_anim_0000_7x11_33: 2041316129007100603
+      x-ray_anim_0000_7x11_31: 5915926791169400691
+      x-ray_anim_0000_7x11_20: -3249607461007751679
+      x-ray_anim_0000_7x11_59: -7445565757510276403
+      x-ray_anim_0000_7x11_12: 3800383551885739616
+      x-ray_anim_0000_7x11_43: 9181646533100218303
+      x-ray_anim_0000_7x11_56: -6376673797914346916
+      x-ray_anim_0000_7x11_57: 4234720241403770895
+      x-ray_anim_0000_7x11_42: 6781377263134249084
+      x-ray_anim_0000_7x11_45: -1245181360187508925
+      x-ray_anim_0000_7x11_37: -5211034044665767462
+      x-ray_anim_0000_7x11_51: 571969093231103427
+      x-ray_anim_0000_7x11_1: -3913516388594640243
+      x-ray_anim_0000_7x11_28: 8412594148630870654
+      x-ray_anim_0000_7x11_65: 8475164214629544796
+      x-ray_anim_0000_7x11_67: 1435044280146413905
+      x-ray_anim_0000_7x11_55: -6640594382083344761
+      x-ray_anim_0000_7x11_13: -1226366699393530699
+      x-ray_anim_0000_7x11_32: -3979360314293668047
+      x-ray_anim_0000_7x11_17: 6113099060452097048
+      x-ray_anim_0000_7x11_24: 3698172394934054934
+      x-ray_anim_0000_7x11_40: -6954479932586890111
+      x-ray_anim_0000_7x11_29: -2855418451317295789
+      x-ray_anim_0000_7x11_50: 3428158536457437481
+      x-ray_anim_0000_7x11_53: -7742972246385997898
+      x-ray_anim_0000_7x11_26: 1336739068605839279
+      x-ray_anim_0000_7x11_38: 182523060354303488
+      x-ray_anim_0000_7x11_34: 6079096141835326330
+      x-ray_anim_0000_7x11_54: 1832051306268258075
+      x-ray_anim_0000_7x11_23: 3039237327685429368
+      x-ray_anim_0000_7x11_10: 3524570714035911040
+      x-ray_anim_0000_7x11_73: -8989799153247391037
+      x-ray_anim_0000_7x11_6: -8553493991627368000
+      x-ray_anim_0000_7x11_14: 7624750598883575368
+      x-ray_anim_0000_7x11_47: -5856526328811756592
+      x-ray_anim_0000_7x11_8: -3260965756429004776
+      x-ray_anim_0000_7x11_58: -3321047864387468333
+      x-ray_anim_0000_7x11_39: -583884282213512991
+      x-ray_anim_0000_7x11_64: -8026028754186274604
+      x-ray_anim_0000_7x11_66: 9141999817736285163
+      x-ray_anim_0000_7x11_15: -8835351934779877250
+      x-ray_anim_0000_7x11_46: 3138853214017457079
+      x-ray_anim_0000_7x11_5: -745237577201084586
+      x-ray_anim_0000_7x11_35: -2254655186394229593
+      x-ray_anim_0000_7x11_9: -3217777403143904795
+      x-ray_anim_0000_7x11_68: -5750900622451926214
+      x-ray_anim_0000_7x11_69: 7696850030388368829
+      x-ray_anim_0000_7x11_2: -1671230399687966321
+      x-ray_anim_0000_7x11_36: -5325294708835968620
+      x-ray_anim_0000_7x11_52: 4744627095702874519
+      x-ray_anim_0000_7x11_27: -2958872474599475228
+      x-ray_anim_0000_7x11_21: 2274473181454157051
+      x-ray_anim_0000_7x11_11: 302619617610037418
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
